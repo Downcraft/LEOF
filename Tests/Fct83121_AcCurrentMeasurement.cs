@@ -133,17 +133,17 @@
             test = GetTest("FCT121016");
             test.Nominal = test.Nominal * GetTest("FCT121001").Measured;
             test.Maximal = test.Nominal + test.Maximal;
-            TestLibrary.Voltage(test, range: DvmVRange.R100mV);
+            TestLibrary.Voltage(test, range: DvmVRange.R1V);
 
             test = GetTest("FCT121017");
             test.Nominal = test.Nominal * GetTest("FCT121001").Measured;
             test.Maximal = test.Nominal + test.Maximal;
-            TestLibrary.Voltage(test, range: DvmVRange.R100mV);
+            TestLibrary.Voltage(test, range: DvmVRange.R1V);
 
             test = GetTest("FCT121018");
             test.Nominal = test.Nominal * GetTest("FCT121001").Measured;
             test.Maximal = test.Nominal + test.Maximal;
-            TestLibrary.Voltage(test, range: DvmVRange.R100mV);
+            TestLibrary.Voltage(test, range: DvmVRange.R1V);
 
             test = GetTest("FCT121019");
             TestLibrary.Voltage(test, range: DvmVRange.R1V);
@@ -181,13 +181,13 @@
             xcp.Download(a2l.Characteristics["HwTest_cPhaseOvcDiagLowOvrrdEn"], new List<byte> { 0x01 });
 
             test = GetTest("FCT121027");
-            TestLibrary.Voltage(test, range: DvmVRange.R100mV);
+            TestLibrary.Voltage(test, range: DvmVRange.R1V);
 
             test = GetTest("FCT121028");
-            TestLibrary.Voltage(test, range: DvmVRange.R100mV);
+            TestLibrary.Voltage(test, range: DvmVRange.R1V);
 
             test = GetTest("FCT121029");
-            TestLibrary.Voltage(test, range: DvmVRange.R100mV);
+            TestLibrary.Voltage(test, range: DvmVRange.R1V);
 
             test = GetTest("FCT121030");
             TestLibrary.Voltage(test, range: DvmVRange.R1V);
