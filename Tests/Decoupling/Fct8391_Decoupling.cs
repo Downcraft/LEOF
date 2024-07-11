@@ -135,7 +135,9 @@
                 test = GetTest("FCT091012");
                 TestLibrary.Voltage(test, range: DvmVRange.R10V, measureTime: 0.05);
 
-                if(test.Result == TestResult.PASS)
+                Thread.Sleep(100);
+
+                if (test.Result == TestResult.PASS)
                 {
                     break;
                 }
