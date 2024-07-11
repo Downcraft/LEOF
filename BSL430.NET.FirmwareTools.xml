@@ -1,0 +1,314 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BSL430.NET.FirmwareTools</name>
+    </assembly>
+    <members>
+        <member name="T:BSL430_NET.FirmwareTools.Extensions">
+            <summary>
+            Extensions class wrapping some extensions methods like CRC calc, ToByteArray or ToExt.
+            </summary>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.Extensions.ToByteArray(System.String)">
+            <summary>
+            Covnerts hex string to byte array.
+            </summary>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.Extensions.ToExt(BSL430_NET.FirmwareTools.FwTools.FwFormat)">
+            <summary>
+            Extension method to provide firmware format ext string with dot.
+            </summary>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.Extensions.Crc16Ccitt(System.Collections.Generic.IEnumerable{System.Byte})">
+            <summary>
+            CRC-16-CCITT: Polynom = 0x1021, Initial = 0xFFFF
+            </summary>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.Extensions.Crc16(System.Collections.Generic.IEnumerable{System.Byte},System.Int32,System.Int32)">
+            <summary>
+            CRC-16 generic implementation that needs a specific polynom and initial values.
+            </summary>
+        </member>
+        <member name="T:BSL430_NET.FirmwareTools.FwTools">
+            <summary>
+            FwTools class provides basic manipulation (Parse, Create, Convert, Combine, Validate, Compare) with Intel-HEX, 
+            TI-TXT, SREC and ELF firmware formatted files.
+            </summary>
+            <summary>
+            FwTools class provides basic manipulation (Parse, Create, Convert, Combine, Validate, Compare) with Intel-HEX, 
+            TI-TXT, SREC and ELF firmware formatted files.
+            </summary>
+        </member>
+        <member name="T:BSL430_NET.FirmwareTools.FwTools.FwFormat">
+            <summary>
+            Supported firmware formats. AUTO is default value. When chosen AUTO, Parse will auto detect fw format,
+            and Create will use TI-TXT. ELF format is currently supported only by Parse.
+            </summary>
+        </member>
+        <member name="F:BSL430_NET.FirmwareTools.FwTools.FwFormat.AUTO">
+            <summary>When chosen AUTO, Parse will auto detect fw format, and Create will use TI-TXT.</summary>
+        </member>
+        <member name="F:BSL430_NET.FirmwareTools.FwTools.FwFormat.TI_TXT">
+            <summary>TI-TXT format described at: <see href="http://srecord.sourceforge.net/man/man5/srec_ti_txt.html">
+            HERE</see></summary>
+        </member>
+        <member name="F:BSL430_NET.FirmwareTools.FwTools.FwFormat.INTEL_HEX">
+            <summary>Intel-HEX format described at: <see href="https://en.wikipedia.org/wiki/Intel_HEX">HERE</see></summary>
+        </member>
+        <member name="F:BSL430_NET.FirmwareTools.FwTools.FwFormat.SREC">
+            <summary>Motorola-SREC S-Record format described at: <see href="https://en.wikipedia.org/wiki/SREC_(file_format)">
+            HERE</see></summary>
+        </member>
+        <member name="F:BSL430_NET.FirmwareTools.FwTools.FwFormat.ELF">
+            <summary>ELF format described at: <see href="http://man7.org/linux/man-pages/man5/elf.5.html">HERE</see></summary>
+        </member>
+        <member name="T:BSL430_NET.FirmwareTools.FwTools.Firmware">
+            <summary>
+            Firmware object representation. Nodes is collection of FwNode (Addr + Data) and Info is FwInfo class.
+            ToString, Equal and Euqality Operators (==, !=) overides are available.
+            </summary>
+        </member>
+        <member name="P:BSL430_NET.FirmwareTools.FwTools.Firmware.Info">
+            <summary>
+            FwInfo provides info about firmware, like first and last addresses, CRC, code size and 
+            reset vector.
+            </summary>
+        </member>
+        <member name="P:BSL430_NET.FirmwareTools.FwTools.Firmware.Nodes">
+            <summary>
+            List of FwNode, what firmware consits of, representated by single byte with max 32-bit, 
+            usually 16-bit address.
+            </summary>
+        </member>
+        <member name="P:BSL430_NET.FirmwareTools.FwTools.Firmware.MemoryStream">
+            <summary>Memory Stream is sequence of raw bytes.</summary>
+        </member>
+        <member name="P:BSL430_NET.FirmwareTools.FwTools.Firmware.Stream">
+            <summary>Stream is sequence of raw bytes.</summary>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.FwTools.Firmware.#ctor(System.Collections.Generic.List{BSL430_NET.FirmwareTools.FwTools.FwNode},BSL430_NET.FirmwareTools.FwTools.FwFormat,System.Int32,System.Int64,System.Collections.Generic.ICollection{System.Int64})">
+            <summary>
+            Init Firmware with simple data Nodes and new FwInfo class based on valid input data.
+            </summary>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.FwTools.Firmware.#ctor(System.IO.Stream,BSL430_NET.FirmwareTools.FwTools.FwFormat,System.Int64,System.Int32,System.Int64,System.Collections.Generic.ICollection{System.Int64})">
+            <summary>
+            Init Firmware with raw memory stream bytes and new FwInfo class based on valid input data.
+            </summary>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.FwTools.Firmware.SetResetVector(System.Int64)">
+            <summary>
+            Sets Reset Vector property to valid data, calculated from Nodes. ResetVectorAddr is usually 0xFFFE.
+            </summary>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.FwTools.Firmware.ToString">
+            <summary>
+            Formatted important properites describing current Firmware, taken from FwInfo class.
+            </summary>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.FwTools.Firmware.Equals(System.Object)">
+            <summary>
+            True if two Firmwares are the same, meaning ale nodes (Address and Data) are the same, else false.
+            Returns false if any or even if both Firmwares are null.
+            </summary>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.FwTools.Firmware.GetHashCode">
+            <summary>
+            Hash Code created by XORing Address and Data from all Nodes of Firmware.
+            </summary>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.FwTools.Firmware.op_Equality(BSL430_NET.FirmwareTools.FwTools.Firmware,BSL430_NET.FirmwareTools.FwTools.Firmware)">
+            <summary>
+            Equality operator for comparing two Firmwares via overiden Equals and so public Compare.
+            Unlikely in Equals and also Compare, here two null Firmwares return True.
+            </summary>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.FwTools.Firmware.op_Inequality(BSL430_NET.FirmwareTools.FwTools.Firmware,BSL430_NET.FirmwareTools.FwTools.Firmware)">
+            <summary>
+            Not Equality operator for comparing two Firmwares via overiden Equals and so public Compare. 
+            Unlikely in Equals, here two null Firmwares return True.
+            </summary>
+        </member>
+        <member name="T:BSL430_NET.FirmwareTools.FwTools.FwNode">
+            <summary>
+            Atomic unit which every firmware consits of representated by single byte with max 32-bit long address.
+            </summary>
+        </member>
+        <member name="P:BSL430_NET.FirmwareTools.FwTools.FwNode.Data">
+            <summary>Data is single data byte with associated 16-bit address Addr.</summary>
+        </member>
+        <member name="P:BSL430_NET.FirmwareTools.FwTools.FwNode.Addr">
+            <summary>Addr is address of Data byte, max 32-bit length is supported.</summary>
+        </member>
+        <member name="T:BSL430_NET.FirmwareTools.FwTools.FwInfo">
+            <summary>
+            FwInfo provides info about firmware, like format, first and last addresses, CRC, code size and reset vector.
+            </summary>
+        </member>
+        <member name="P:BSL430_NET.FirmwareTools.FwTools.FwInfo.Valid">
+            <summary>If firmware is invalid, Valid = false. Otherwise Valid = True.</summary>
+        </member>
+        <member name="P:BSL430_NET.FirmwareTools.FwTools.FwInfo.Format">
+            <summary>Firmware format. TI-TXT, Intel-HEX or ELF is supported.</summary>
+        </member>
+        <member name="P:BSL430_NET.FirmwareTools.FwTools.FwInfo.AddrFirst">
+            <summary>First address in firmware, max 32-bit, usually 16-bit.</summary>
+        </member>
+        <member name="P:BSL430_NET.FirmwareTools.FwTools.FwInfo.AddrLast">
+            <summary>Last address in firmware, max 32-bit, usually 16-bit.</summary>
+        </member>
+        <member name="P:BSL430_NET.FirmwareTools.FwTools.FwInfo.SizeFull">
+            <summary>Total length of firmware, count of all bytes from first address to last address.</summary>
+        </member>
+        <member name="P:BSL430_NET.FirmwareTools.FwTools.FwInfo.SizeCode">
+            <summary>Real count of all bytes in firmware parsed from file.</summary>
+        </member>
+        <member name="P:BSL430_NET.FirmwareTools.FwTools.FwInfo.Crc16">
+            <summary>CRC-16-CCITT is 16-bit crc value of all data bytes in firmware.</summary>
+        </member>
+        <member name="P:BSL430_NET.FirmwareTools.FwTools.FwInfo.ResetVector">
+            <summary>[MSP430 specific] Reset vector is address (value) located usually at 16-bit address 0xFFFE.</summary>
+        </member>
+        <member name="P:BSL430_NET.FirmwareTools.FwTools.FwInfo.SizeBuffer">
+            <summary>[MSP430 specific] Help property for later firmware manipulation, like slicing buffer blocks.</summary>
+        </member>
+        <member name="P:BSL430_NET.FirmwareTools.FwTools.FwInfo.FilledFFAddr">
+            <summary>
+            When parsing FW, FillFF can be set, to output code in single piece. Addresses, that dont belong to 
+            original FW, are in this list.
+            </summary>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.FwTools.FwInfo.#ctor">
+            <summary>
+            Init all property to defaults.
+            </summary>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.FwTools.FwInfo.#ctor(System.Int64,System.Int64,System.Int32,System.Int32,System.Collections.Generic.ICollection{System.Int64})">
+            <summary>
+            Init fake info with values specified as parameters, the rest is init to zero.
+            </summary>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.FwTools.FwInfo.#ctor(System.Collections.Generic.ICollection{BSL430_NET.FirmwareTools.FwTools.FwNode},BSL430_NET.FirmwareTools.FwTools.FwFormat,System.Int32,System.Int64,System.Collections.Generic.ICollection{System.Int64})">
+            <summary>
+            Init info class to values calculated from valid firmware data. size_buffer is optional flag and
+            ResetVectorAddr is usually 0xFFFE, address where reset vector is, and its also optional.
+            </summary>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.FwTools.FwInfo.SetResetVector(System.Collections.Generic.ICollection{BSL430_NET.FirmwareTools.FwTools.FwNode},System.Int64)">
+            <summary>
+            Sets Reset Vector property to valid data, calculated from nodes. ResetVectorAddr is usually 0xFFFE.
+            </summary>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.FwTools.FwInfo.ToString">
+            <summary>
+            Formatted important properites describing current firmware.
+            </summary>
+        </member>
+        <member name="T:BSL430_NET.FirmwareTools.FwTools.BslPasswords">
+            <summary>
+            [MSP430 specific] BSL Password is required for almost any BSL operation except Mass Erase.
+            Password is last 16-byte (F543x-non-A only) or 32-byte (others) of IVT (FFE0-FFFF), if newer 5xx/6xx MCU is
+            used. If MCU from older series is used (1xx/2xx/4xx), password is exactly 20-byte long. Mostly it is 32-byte.
+            </summary>
+        </member>
+        <member name="P:BSL430_NET.FirmwareTools.FwTools.BslPasswords.Password32Byte">
+            <summary>This is the password mostly used in todays MSP430 MCUs, 5xx/6xx series except F543x (non A).</summary>
+        </member>
+        <member name="P:BSL430_NET.FirmwareTools.FwTools.BslPasswords.Password16Byte">
+            <summary>16-byte long Password used only in the very first series of 5xx, the F543x (non A).</summary>
+        </member>
+        <member name="P:BSL430_NET.FirmwareTools.FwTools.BslPasswords.Password20Byte">
+            <summary>20-byte long Password used in old 1xx/2xx/4xx series.</summary>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.FwTools.Parse(System.String,BSL430_NET.FirmwareTools.FwTools.FwFormat,System.Boolean,System.IO.StringWriter)">
+            <summary>
+            Parse firmware file from FirmwarePath in TI-TXT, Intel-HEX or ELF format and returns List of FwNode 
+            (Data+Addr) and Info. Auto Mode reads data and based on some particular characters determine
+            what firmare format it should be.
+            <para/>FillFF is optional parameter forcing to fill missing addr nodes with 0xFF 
+            and return monolithic piece of code, which is usefull for crc calc or overwriting whole memory in mcu.
+            <para/>Log writes text (new line formatted) output only when parsing ELF firmware file.
+            </summary>
+            <exception cref="T:BSL430_NET.FirmwareTools.Helpers.FirmwareToolsException"></exception>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.FwTools.Create(BSL430_NET.FirmwareTools.FwTools.Firmware,BSL430_NET.FirmwareTools.FwTools.FwFormat,System.Int32)">
+            <summary>
+            Create firmware multi-line string in TI-TXT or Intel-HEX format. ELF is not supported yet. 
+            AUTO format will force TI-TXT format.
+            <para/>LineLength defines amount of data bytes per one text row. When = 0, default values are set
+            (TI-TXT = 16, Intel-HEX = 32, SREC = 32).
+            </summary>
+            <exception cref="T:BSL430_NET.FirmwareTools.Helpers.FirmwareToolsException"></exception>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.FwTools.Create(System.Collections.Generic.IEnumerable{System.Byte},System.Int32,BSL430_NET.FirmwareTools.FwTools.FwFormat,System.Int32)">
+            <summary>
+            Create firmware multi-line string in TI-TXT or Intel-HEX format. ELF is not supported yet. 
+            AUTO format will force TI-TXT format. AddrStart is address of first byte in data collection.
+            <para/>LineLength defines amount of data bytes per one text row. When = 0, default values are set
+            (TI-TXT = 16, Intel-HEX = 32, SREC = 32).
+            </summary>
+            <exception cref="T:BSL430_NET.FirmwareTools.Helpers.FirmwareToolsException"></exception>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.FwTools.Create(System.Collections.Generic.ICollection{BSL430_NET.FirmwareTools.FwTools.FwNode},BSL430_NET.FirmwareTools.FwTools.FwFormat,System.Int32)">
+            <summary>
+            Create firmware multi-line string in TI-TXT or Intel-HEX format. ELF is not supported yet. 
+            AUTO format will force TI-TXT format.
+            <para/>LineLength defines amount of data bytes per one text row. When = 0, default values are set
+            (TI-TXT = 16, Intel-HEX = 32, SREC = 32).
+            </summary>
+            <exception cref="T:BSL430_NET.FirmwareTools.Helpers.FirmwareToolsException"></exception>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.FwTools.Convert(System.String,BSL430_NET.FirmwareTools.FwTools.FwFormat,System.Boolean,System.Int32)">
+            <summary>
+            Convert firmware TI-TXT, Intel-HEX or ELF format (auto detected) to firmware in TI-TX or Intel-HEX format.
+            Returned Fw is firmware and Format is useful for auto-detect feedback, indicates input format.
+            <para/>FillFF is optional parameter forcing to fill missing addr nodes with 0xFF 
+            and return monolithic piece of code, which is usefull for crc calc or overwriting whole memory in mcu.
+            <para/>LineLength defines amount of data bytes per one text row. When = 0, default values are set
+            (TI-TXT = 16, Intel-HEX = 32, SREC = 32).
+            </summary>
+            <exception cref="T:BSL430_NET.FirmwareTools.Helpers.FirmwareToolsException"></exception>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.FwTools.GetPassword(System.String)">
+            <summary>
+            [MSP430 specific] Read and parse firmware file (format auto-detected) and return BSL password.
+            Password is last 16-byte (F543x-non-A only) or 32-byte (others) of IVT (FFE0-FFFF), if newer 5xx/6xx MCU is
+            used. If MCU from older series is used (1xx/2xx/4xx), password is exactly 20-byte long. Mostly it is 32-byte.
+            </summary>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.FwTools.Validate(System.String,System.IO.StringWriter)">
+            <summary>
+            Validate firmware file and return FwInfo class, with specific firmware information.
+            ResetVector and SizeBuffer are MSP430 specifics, other properties are universal.
+            <para/>Log writes text (new line formatted) output only when parsing ELF firmware file.
+            </summary>
+            <exception cref="T:BSL430_NET.FirmwareTools.Helpers.FirmwareToolsException"></exception>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.FwTools.Combine(System.String,System.String,BSL430_NET.FirmwareTools.FwTools.FwFormat,System.Boolean,System.Int32)">
+            <summary>
+            Combines two firmware files into single one with format specified. Usually, main firmware
+            and EEPROM file is done this way, or main firmware and Info A flash content is merged.
+            Returned Fw is firmware and Format1 with Format2 are useful for auto-detect feedback, indicates input formats.
+            <para/>FillFF is optional parameter forcing to fill missing addr nodes with 0xFF 
+            and return monolithic piece of code, which is usefull for crc calc or overwriting whole memory in mcu.
+            <para/>LineLength defines amount of data bytes per one text row. When = 0, default values are set
+            (TI-TXT = 16, Intel-HEX = 32, SREC = 32).
+            </summary>
+            <exception cref="T:BSL430_NET.FirmwareTools.Helpers.FirmwareToolsException"></exception>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.FwTools.Compare(System.String,System.String)">
+            <summary>
+            Compare two Firmware files. First, auto-detects format, then parse Nodes (Address + Data) and finally run compare.
+            <para/>Equal = True if both files contains exactly same set of Firmware Nodes, in other case result is false.
+            <para/>Equal = False if any Firmware is null or if any Firmware Node count is zero.
+            <para/>Match [0.0 ; 1.0] is match when 1.0 is full match and Equal = True, and 0.0 is different fw.
+            <para/>BytesDiff is count of bytes (Data nodes) which both firmwares differ at. 0 means full match.
+            </summary>
+            <exception cref="T:BSL430_NET.FirmwareTools.Helpers.FirmwareToolsException"></exception>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.FwTools.Compare(BSL430_NET.FirmwareTools.FwTools.Firmware,BSL430_NET.FirmwareTools.FwTools.Firmware)">
+            <summary>
+            Compare two already parsed Firmware objects (Address + Data).
+            <para/>Equal = True if both files contains exactly same set of Firmware Nodes, in other case result is false.
+            <para/>Equal = False if any Firmware is null or if any Firmware Node count is zero.
+            <para/>Match [0.0 ; 1.0] is match when 1.0 

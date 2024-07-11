@@ -1,0 +1,675 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TestFramework</name>
+    </assembly>
+    <members>
+        <member name="T:Spea.TestFramework.BaseTest`1">
+            <summary>
+            Base class for all FCT-Tests.
+            </summary>
+            <typeparam name="TTestParameters">A type used to pass custom parameters to the tests.</typeparam>
+        </member>
+        <member name="M:Spea.TestFramework.BaseTest`1.#ctor(System.Int32,Spea.TestFramework.SiteManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Spea.TestFramework.BaseTest`1"/> class.
+            </summary>
+            <param name="site">The site being tested.</param>
+            <param name="siteManager">The <see cref="T:Spea.TestFramework.SiteManager"/> instance for this TPGM.</param>
+        </member>
+        <member name="M:Spea.TestFramework.BaseTest`1.#ctor(System.Collections.Generic.List{System.Int32},Spea.TestFramework.SiteManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Spea.TestFramework.BaseTest`1"/> class.
+            </summary>
+            <param name="sites">The list of sites being tested.</param>
+            <param name="siteManager">The <see cref="T:Spea.TestFramework.SiteManager"/> instance for this TPGM.</param>
+        </member>
+        <member name="T:Spea.TestFramework.BaseTest`3">
+            <summary>
+            Base class for all FCT-Tests.
+            </summary>
+            <typeparam name="TTestParameters">A type used to pass parameters to the tests.</typeparam>
+            <typeparam name="TUserFlagPurpose">An enum describing the purpose of each used user flag.</typeparam>
+            <typeparam name="TPmxPurpose">An enum describing the purpose of each used pmx channel.</typeparam>
+        </member>
+        <member name="M:Spea.TestFramework.BaseTest`3.#ctor(System.Int32,Spea.TestFramework.SiteManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Spea.TestFramework.BaseTest`3"/> class.
+            </summary>
+            <param name="site">The site being tested.</param>
+            <param name="siteManager">The <see cref="T:Spea.TestFramework.SiteManager"/> instance for this TPGM.</param>
+        </member>
+        <member name="M:Spea.TestFramework.BaseTest`3.#ctor(System.Collections.Generic.List{System.Int32},Spea.TestFramework.SiteManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Spea.TestFramework.BaseTest`3"/> class.
+            </summary>
+            <param name="sites">The list of sites being tested.</param>
+            <param name="siteManager">The <see cref="T:Spea.TestFramework.SiteManager"/> instance for this TPGM.</param>
+        </member>
+        <member name="T:Spea.TestFramework.LoggingVariant">
+            <summary>
+            Variants for Logging in CdColl.
+            </summary>
+        </member>
+        <member name="F:Spea.TestFramework.LoggingVariant.Id">
+            <summary>
+            Id of test.
+            </summary>
+        </member>
+        <member name="F:Spea.TestFramework.LoggingVariant.Name">
+            <summary>
+            Name of the Test.
+            </summary>
+        </member>
+        <member name="F:Spea.TestFramework.LoggingVariant.IdAndName">
+            <summary>
+            Combination of Id and Testname.
+            </summary>
+        </member>
+        <member name="F:Spea.TestFramework.LoggingVariant.None">
+            <summary>
+            Id and Name will not be used.
+            </summary>
+        </member>
+        <member name="T:Spea.TestFramework.CdCollLogCongfig">
+            <summary>
+            Configuartion of the logging for Cdcoll.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.CdCollLogCongfig.Taskname">
+            <summary>
+            .
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.CdCollLogCongfig.Remark">
+            <summary>
+            ...
+            </summary>
+        </member>
+        <member name="T:Spea.TestFramework.MultiSiteTestFactory`1">
+            <summary>
+            Provides a method for creating instances of multi site tests.
+            </summary>
+            <typeparam name="TTestParameters">A type used to pass custom parameters to the tests.</typeparam>
+        </member>
+        <member name="M:Spea.TestFramework.MultiSiteTestFactory`1.#ctor(System.Func{System.Collections.Generic.List{System.Int32},Spea.TestFramework.SiteManager,Spea.TestFramework.BaseTest{`0}},System.Int32[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Spea.TestFramework.MultiSiteTestFactory`1"/> class.
+            </summary>
+            <param name="factory">A delegate used to create an instance of the test.</param>
+            <param name="sites">The sites that should be tested.</param>
+        </member>
+        <member name="P:Spea.TestFramework.MultiSiteTestFactory`1.Sites">
+            <summary>
+            Gets or sets the list of sites that should be tested.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.MultiSiteTestFactory`1.Factory">
+            <summary>
+            Gets the delegate used to create an instance of the test.
+            </summary>
+        </member>
+        <member name="M:Spea.TestFramework.MultiSiteTestFactory`1.Create(Spea.TestFramework.SiteManager)">
+            <summary>
+            Creates the test for the specified sites that should be tested.
+            </summary>
+            <param name="siteManager">The site manager instance for the project.</param>
+            <returns>The instance of the test.</returns>
+        </member>
+        <member name="T:Spea.TestFramework.MultiSiteTestFactory`3">
+            <summary>
+            Provides a method for creating instances of multi site tests.
+            </summary>
+            <typeparam name="TTestParameters">A type used to pass parameters to the tests.</typeparam>
+            <typeparam name="TUserFlagPurpose">An enum describing the purpose of each used user flag.</typeparam>
+            <typeparam name="TPmxPurpose">An enum describing the purpose of each used PMX channel.</typeparam>
+        </member>
+        <member name="M:Spea.TestFramework.MultiSiteTestFactory`3.#ctor(System.Func{System.Collections.Generic.List{System.Int32},Spea.TestFramework.SiteManager,Spea.TestFramework.BaseTest{`0,`1,`2}},System.Int32[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Spea.TestFramework.MultiSiteTestFactory`3"/> class.
+            </summary>
+            <param name="factory">A delegate used to create an instance of the test.</param>
+            <param name="sites">The sites that should be tested.</param>
+        </member>
+        <member name="P:Spea.TestFramework.MultiSiteTestFactory`3.Sites">
+            <summary>
+            Gets or sets the list of sites that should be tested.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.MultiSiteTestFactory`3.Factory">
+            <summary>
+            Gets the delegate used to create an instance of the test.
+            </summary>
+        </member>
+        <member name="M:Spea.TestFramework.MultiSiteTestFactory`3.Create(Spea.TestFramework.SiteManager)">
+            <summary>
+            Creates the test for the specified sites that should be tested.
+            </summary>
+            <param name="siteManager">The site manager instance for the project.</param>
+            <returns>The instance of the test.</returns>
+        </member>
+        <member name="T:Spea.TestFramework.MultiSiteTestList`1">
+            <summary>
+            A list of <see cref="T:Spea.TestFramework.MultiSiteTestFactory`1"/>.
+            </summary>
+            <typeparam name="TTestParameters">A type used to pass custom parameters to the tests.</typeparam>
+        </member>
+        <member name="M:Spea.TestFramework.MultiSiteTestList`1.Add(System.Func{System.Collections.Generic.List{System.Int32},Spea.TestFramework.SiteManager,Spea.TestFramework.BaseTest{`0}},System.Int32[])">
+            <summary>
+            Adds an object to the end of <see cref="T:Spea.TestFramework.MultiSiteTestFactory`1"/>.
+            </summary>
+            <param name="factory">A delegate used to create an instance of the test.</param>
+            <param name="sites">The sites that should be tested.</param>
+        </member>
+        <member name="T:Spea.TestFramework.MultiSiteTestList`3">
+            <summary>
+            A list of <see cref="T:Spea.TestFramework.MultiSiteTestFactory`3"/>.
+            </summary>
+            <typeparam name="TTestParameters">A type used to pass parameters to the tests.</typeparam>
+            <typeparam name="TUserFlagPurpose">An enum describing the purpose of each used user flag.</typeparam>
+            <typeparam name="TPmxPurpose">An enum describing the purpose of each used pmx channel.</typeparam>
+        </member>
+        <member name="M:Spea.TestFramework.MultiSiteTestList`3.Add(System.Func{System.Collections.Generic.List{System.Int32},Spea.TestFramework.SiteManager,Spea.TestFramework.BaseTest{`0,`1,`2}},System.Int32[])">
+            <summary>
+            Adds an object to the end of <see cref="T:Spea.TestFramework.MultiSiteTestFactory`3"/>.
+            </summary>
+            <param name="factory">A delegate used to create an instance of the test.</param>
+            <param name="sites">The sites that should be tested.</param>
+        </member>
+        <member name="T:Spea.TestFramework.PmxChannelMap`1">
+            <summary>
+            A map of pmx channels by purpose.
+            </summary>
+            <typeparam name="TPmxPurpose">An enum describing the purpose of each used pmx channel.</typeparam>
+        </member>
+        <member name="T:Spea.TestFramework.Bay">
+            <summary>
+            Represents the mapping of a bay to the DUT's sites, which are tested by it.
+            </summary>
+        </member>
+        <member name="M:Spea.TestFramework.Bay.#ctor(System.Int32,System.Collections.Generic.List{System.Int32})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Spea.TestFramework.Bay"/> class.
+            </summary>
+            <param name="number">The bay number.</param>
+            <param name="sites">A list containing the sites, which are tested by this bay.</param>
+        </member>
+        <member name="P:Spea.TestFramework.Bay.Number">
+            <summary>
+            Gets the bay number.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.Bay.Sites">
+            <summary>
+            Gets a list containing the sites, which are tested by this bay.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.Bay.SiteCount">
+            <summary>
+            Gets the number of sites, which are tested by this bay.
+            </summary>
+        </member>
+        <member name="T:Spea.TestFramework.Site">
+            <summary>
+            Represents a site of the DUT and its test state.
+            </summary>
+        </member>
+        <member name="M:Spea.TestFramework.Site.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Spea.TestFramework.Site"/> class.
+            </summary>
+            <param name="number">The site number.</param>
+        </member>
+        <member name="P:Spea.TestFramework.Site.Number">
+            <summary>
+            Gets the site number.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.Site.StageOffset">
+            <summary>
+            Gets or sets the StageOffset.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.Site.TestResult">
+            <summary>
+            Gets or sets the test result for this site.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.Site.IsTestEnabled">
+            <summary>
+            Gets or sets a value indicating whether the site should be tested.
+            </summary>
+        </member>
+        <member name="T:Spea.TestFramework.SiteManager">
+            <summary>
+            Responsible for determining which sites should be tested.
+            </summary>
+        </member>
+        <member name="F:Spea.TestFramework.SiteManager._sites">
+            <summary>
+            A list containing the sites assigned to the bay executing this test program.
+            </summary>
+        </member>
+        <member name="M:Spea.TestFramework.SiteManager.#ctor(System.Collections.Generic.List{Spea.TestFramework.Bay},System.Int32,System.Boolean,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Spea.TestFramework.SiteManager"/> class.
+            </summary>
+            <param name="bays">A list containing the site assignment for each bay. Only the bays used in the test must be in the list.</param>
+            <param name="testPointOffset">The test point offset between two consecutive sites.</param>
+            <param name="debug">A value indicating if debug mode should be enbled. All sites are enabled in debug mode.</param>
+            <param name="stageOffset">Adding an OffSet for the current Stage in a MultiProject.</param>
+            <exception cref="T:System.ArgumentException">Either the site assignment for the bay executing this test program wasn't configured or it was configured multiple times.</exception>
+        </member>
+        <member name="P:Spea.TestFramework.SiteManager.BayNumber">
+            <summary>
+            Gets the number of the bay executing this test program.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.SiteManager.TestPointOffset">
+            <summary>
+            Gets the test point offset between the sites.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.SiteManager.StageOffset">
+            <summary>
+            Gets or sets the satge offset between the stages.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.SiteManager.DataLogTests">
+            <summary>
+            Gets or sets a value indicating whether gets or sets the satge offset between the stages.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.SiteManager.Sites">
+            <summary>
+            Gets a list of all sites assigned to the bay executing this test program.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.SiteManager.SitesToTest">
+            <summary>
+            Gets a list of all sites that should be tested and are assigned to the bay executing this test program.
+            </summary>
+        </member>
+        <member name="M:Spea.TestFramework.SiteManager.GetTestResult(System.Int32)">
+            <summary>
+            Retrieves the test result for a site.
+            </summary>
+            <param name="siteNumber">The site number.</param>
+            <returns>The test result.</returns>
+            <exception cref="T:System.ArgumentException">Site isn't assigned to the bay executing this test program.</exception>
+        </member>
+        <member name="M:Spea.TestFramework.SiteManager.SetTestResult(System.Int32,Spea.SiteResults,System.Boolean)">
+            <summary>
+            Sets the test result for a site.
+            </summary>
+            <param name="siteNumber">The site number.</param>
+            <param name="result">The test result.</param>
+            <param name="disableTestIfFail">If site should be removed from <see cref="P:Spea.TestFramework.SiteManager.SitesToTest"/> in case the result is <see cref="F:Spea.SiteResults.RESULT_FAIL"/>.</param>
+            <exception cref="T:System.ArgumentException">Site isn't assigned to the bay executing this test program.</exception>
+        </member>
+        <member name="M:Spea.TestFramework.SiteManager.DisableSite(System.Int32)">
+            <summary>
+            Disables testing for the specified site.
+            </summary>
+            <param name="siteNumber">The site number.</param>
+        </member>
+        <member name="M:Spea.TestFramework.SiteManager.EnableSite(System.Int32)">
+            <summary>
+            Enables testing for the specified site.
+            </summary>
+            <param name="siteNumber">The site number.</param>
+        </member>
+        <member name="M:Spea.TestFramework.SiteManager.IsSiteEnabled(System.Int32)">
+            <summary>
+            Gets a value indicating whether a site is enabled.
+            </summary>
+            <param name="siteNumber">The site number.</param>
+            <returns>A value indicating whether a site is enabled.</returns>
+        </member>
+        <member name="M:Spea.TestFramework.SiteManager.GetTestPointForSite(System.Int32,System.Int32)">
+            <summary>
+            Gets the testpoint number with the correct offset for the specified site.
+            </summary>
+            <param name="site">The site.</param>
+            <param name="testPoint">The test point number of site 1.</param>
+            <returns>The testpoint number with the correct offset for the specified site.</returns>
+        </member>
+        <member name="T:Spea.TestFramework.TemplateTest`2">
+            <summary>
+            Base class for all FCT-Tests.
+            </summary>
+            <typeparam name="TTestEnv">The type of the test environment instance.</typeparam>
+            <typeparam name="TTestParameters">A type used to pass custom parameters to the tests.</typeparam>
+        </member>
+        <member name="M:Spea.TestFramework.TemplateTest`2.#ctor(System.Int32,Spea.TestFramework.SiteManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Spea.TestFramework.TemplateTest`2"/> class.
+            </summary>
+            <param name="site">The site being tested.</param>
+            <param name="siteManager">The <see cref="P:Spea.TestFramework.TemplateTest`2.SiteManager"/> instance for this TPGM.</param>
+        </member>
+        <member name="M:Spea.TestFramework.TemplateTest`2.#ctor(System.Collections.Generic.List{System.Int32},Spea.TestFramework.SiteManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Spea.TestFramework.TemplateTest`2"/> class.
+            </summary>
+            <param name="sites">The list of sites being tested.</param>
+            <param name="siteManager">The <see cref="P:Spea.TestFramework.TemplateTest`2.SiteManager"/> instance for this TPGM.</param>
+        </member>
+        <member name="P:Spea.TestFramework.TemplateTest`2.Sites">
+            <summary>
+            Gets all sites being tested.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.TemplateTest`2.IsEnabled">
+            <summary>
+            Gets or sets a value indicating whether the test should be performed.
+            This value is read from Objects.ini using the <see cref="M:Spea.TestFramework.TemplateTest`2.ApplyUserChanges"/> method.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.TemplateTest`2.CdCollLogCongfig">
+            <summary>
+            Gets or sets the CdCollLoggingConfig. You can configure the remark and the taskname.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.TemplateTest`2.Name">
+            <summary>
+            Gets or sets the name of the est, e.g. "Voltage and Current in Sleep State".
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.TemplateTest`2.Id">
+            <summary>
+            Gets or sets the id of the Test, e.g. "8.4.1".
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.TemplateTest`2.TestItems">
+            <summary>
+            Gets or sets a list containing all test items that are tested within the FCT-Test.
+            This list should correspond the test specification. The information of each entry of this list
+            can be / is used to perform and log tests.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.TemplateTest`2.TestItemsBySite">
+            <summary>
+            Gets or sets a map of a site to a list of test items.
+            This makes it possible to have results for multiple sites in one test (parallel testing use case).
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.TemplateTest`2.Site">
+            <summary>
+            Gets the site being tested. Only works for tests handling a single site.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.TemplateTest`2.SiteManager">
+            <summary>
+            Gets the site manager instance.
+            </summary>
+        </member>
+        <member name="M:Spea.TestFramework.TemplateTest`2.GetTest(System.String)">
+            <summary>
+            Retrieves a test item by the descriptor. Only works for tests handling a single site.
+            </summary>
+            <param name="descriptor">The descriptor of the test.</param>
+            <returns>The test item.</returns>
+        </member>
+        <member name="M:Spea.TestFramework.TemplateTest`2.GetTest(System.String,System.Int32)">
+            <summary>
+            Retrieves a test item by the descriptor and site.
+            </summary>
+            <param name="descriptor">The descriptor of the test.</param>
+            <param name="site">The site for which the test should be retrieved.</param>
+            <returns>The test item.</returns>
+        </member>
+        <member name="M:Spea.TestFramework.TemplateTest`2.Test(`0,`1,System.Boolean,System.Boolean)">
+            <summary>
+            Executes and logs the test results to CdColl and RunPack, if test is enabled.<para/>
+            </summary>
+            <param name="testEnvironment">The test environment instance for this application.</param>
+            <param name="parameters">Custom parameters.</param>
+            <param name="isLogTimeEnabled">A value indicating whether the time ellapsed should be printed in runpack.</param>
+            <param name="isLogQueueEnabled">A value indicating whether the logging to runpack should occur in a ordered manner (bays respect a queue).</param>
+            <returns><see cref="F:Spea.TestResult.PASS"/> or <see cref="F:Spea.TestResult.FAILBOTH"/>.</returns>
+        </member>
+        <member name="M:Spea.TestFramework.TemplateTest`2.RunTest(`0,`1)">
+            <summary>
+            Executes the test.<para/>
+            </summary>
+            <param name="testEnvironment">The test environment instance for this application.</param>
+            <param name="parameters">Custom parameters.</param>
+        </member>
+        <member name="M:Spea.TestFramework.TemplateTest`2.LogResults(System.Int32,System.Int32)">
+            <summary>
+            Logs results to RunPack and CdColl.
+            </summary>
+            <param name="site">The site which was tested.</param>
+            <param name="stageOffset">The stageOffSet which should be added for the CDCOLL and DATALOG for Multistage Multiprojects.</param>
+            <returns><see cref="F:Spea.TestResult.PASS"/> or <see cref="F:Spea.TestResult.FAILBOTH"/>.</returns>
+        </member>
+        <member name="M:Spea.TestFramework.TemplateTest`2.LogTestStart(System.Collections.Generic.List{System.Int32})">
+            <summary>
+            Logs the start of a test procedure in Runpack.
+            </summary>
+            <param name="sites">The sites being tested.</param>
+        </member>
+        <member name="M:Spea.TestFramework.TemplateTest`2.ApplyUserChanges">
+            <summary>
+            Apply the changes made by the user in Objects.ini to the <see cref="P:Spea.TestFramework.TemplateTest`2.TestItems"/> list.
+            </summary>
+        </member>
+        <member name="T:Spea.TestFramework.TestItem">
+            <summary>
+            Represents a single test item of a functional test.
+            </summary>
+        </member>
+        <member name="F:Spea.TestFramework.TestItem.StartId">
+            <summary>
+            The first ID that will be assigned to functional test items.
+            </summary>
+        </member>
+        <member name="F:Spea.TestFramework.TestItem._nextAvailableId">
+            <summary>
+            The next ID that will be assigned to a functional test item on new().
+            </summary>
+        </member>
+        <member name="F:Spea.TestFramework.TestItem._measured">
+            <summary>
+            The measured value for this test.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.TestItem.NextAvailableId">
+            <summary>
+            Gets the next available Id.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.TestItem.Descriptor">
+            <summary>
+            Gets or sets the test item descriptor as specified in the test specification.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.TestItem.Remark">
+            <summary>
+            Gets or sets the remark for the test item.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.TestItem.TestPoints">
+            <summary>
+            Gets or sets a list of test points used during the test.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.TestItem.Minimal">
+            <summary>
+            Gets or sets the minimal measured value accepted for this test.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.TestItem.Nominal">
+            <summary>
+            Gets or sets the nominal value for this this test.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.TestItem.Maximal">
+            <summary>
+            Gets or sets the maximal value for this test.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.TestItem.Measured">
+            <summary>
+            Gets or sets the measured value for this test.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.TestItem.Unit">
+            <summary>
+            Gets or sets the unit of the measured quantity.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.TestItem.Result">
+            <summary>
+            Gets the result of the test.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.TestItem.IsNoError">
+            <summary>
+            Gets or sets a value indicating whether the measured value should be ignored. If set, the test will always be PASS.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.TestItem.IsLogEnabled">
+            <summary>
+            Gets or sets a value indicating whether the test item should be logged.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.TestItem.IsTestReport">
+            <summary>
+            Gets or sets a value indicating whether the test item should be logged the test report window, in case of FAIL.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.TestItem.Tested">
+            <summary>
+            Gets a value indicating whether the test item was tested.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.TestItem.Id">
+            <summary>
+            Gets the unique test ID, which is assigned automatically based on the available IDs.
+            </summary>
+        </member>
+        <member name="M:Spea.TestFramework.TestItem.ResetId(System.Int32)">
+            <summary>
+            Resets the Id count.
+            </summary>
+            <param name="id">The id used to reset the count.</param>
+        </member>
+        <member name="M:Spea.TestFramework.TestItem.ToLogInfo(System.String,System.String,System.Int32,Spea.TestFramework.CdCollLogCongfig)">
+            <summary>
+            Converts a test item to a logable object, which can be used by <see cref="T:Spea.LogController"/>.
+            </summary>
+            <param name="testNumber">The number of the test as defined in the test specification.</param>
+            <param name="testName">The name of the test as defined in the test specification.</param>
+            <param name="site">The site for which this test was executed.</param>
+            <param name="config">Configuration of Id and Name in CDCOLL.</param>
+            <returns>The correspondent <see cref="T:Spea.LogInfo"/> object.</returns>
+        </member>
+        <member name="M:Spea.TestFramework.TestItem.Clone">
+            <inheritdoc/>
+        </member>
+        <member name="T:Spea.TestFramework.TestList`1">
+            <summary>
+            A list of a factory functions for <see cref="T:Spea.TestFramework.BaseTest`1"/>.<br/>
+            Example: (int site, SiteManager siteManager) => new MyTest(site, siteManager).
+            </summary>
+            <typeparam name="TTestParameters">A type used to pass custom parameters to the tests.</typeparam>
+        </member>
+        <member name="T:Spea.TestFramework.TestList`3">
+            <summary>
+            A list of a factory functions for <see cref="T:Spea.TestFramework.BaseTest`3"/>.<br/>
+            Example: (int site, SiteManager siteManager) => new MyTest(site, siteManager).
+            </summary>
+            <typeparam name="TTestParameters">A type used to pass parameters to the tests.</typeparam>
+            <typeparam name="TUserFlagPurpose">An enum describing the purpose of each used user flag.</typeparam>
+            <typeparam name="TPmxPurpose">An enum describing the purpose of each used pmx channel.</typeparam>
+        </member>
+        <member name="T:Spea.TestFramework.TestPoint">
+            <summary>
+            Represents a test point.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.TestPoint.Adaptertpath">
+            <summary>
+            Gets the path to the ..\ADAPTER\TPGM_FOLDER\TPGM\ folder of a Leonardo project.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.TestPoint.Boardpath">
+            <summary>
+            Gets the path to the ..\BOARD\TPGM_FOLDER\TPGM\ folder of a Leonardo project.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.TestPoint.TpgmPath">
+            <summary>
+            Gets or sets the path to the ..\PRJ\TPGM_FOLDER\TPGM\PROGRAM\ folder of a Leonardoproject.
+            </summary>
+        </member>
+        <member name="M:Spea.TestFramework.TestPoint.#ctor(System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Spea.TestFramework.TestPoint"/> struct. <br/>
+            The passed name is used to locate the test point by comparing it to the test point name or drawing reference. The test point number is detected automatically. <br/>
+            If the name passed matches more then one entry of the selected site, an exception is thrown. For this cases use the constructor <see cref="M:Spea.TestFramework.TestPoint.#ctor(System.Int32)"/>.
+            </summary>
+            <param name="name">The test point name.</param>
+            <param name="site">The site of the test point.</param>
+        </member>
+        <member name="M:Spea.TestFramework.TestPoint.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Spea.TestFramework.TestPoint"/> struct. The test point name is detected automatically.
+            </summary>
+            <param name="number">The test point number.</param>
+        </member>
+        <member name="P:Spea.TestFramework.TestPoint.Name">
+            <summary>
+            Gets the name of the test point.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.TestPoint.Number">
+            <summary>
+            Gets the unique test point number.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.TestPoint.Channel">
+            <summary>
+            Gets the test point channel.
+            </summary>
+        </member>
+        <member name="T:Spea.TestFramework.Private.TP">
+            <summary>
+            Class of TP.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.Private.TP.Name">
+            <summary>
+            Gets or sets name of TP.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.Private.TP.DrawingReference">
+            <summary>
+            Gets or sets drawRef of TP.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.Private.TP.Number">
+            <summary>
+            Gets or sets number of TP.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.Private.TP.Channel">
+            <summary>
+            Gets or sets channel of TP.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.Private.TP.Site">
+            <summary>
+            Gets or sets site of TP.
+            </summary>
+        </member>
+        <member name="T:Spea.TestFramework.UserFlagMap`1">
+            <summary>
+            A map of user flags by purpose.
+            </summary>
+            <typeparam name="TUserFlagPurpose">An enum describing the purpose of each used user flag.</typeparam>
+        </member>
+    </members>
+</doc>

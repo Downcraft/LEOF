@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B6E90C64-4703-4CB5-BBBA-5E853D7CFA6A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TPGM</RootNamespace>
+    <AssemblyName>TPGM</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AtosF, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\SPEA\DLL\AtosF.dll</HintPath>
+    </Reference>
+    <Reference Include="AtosFObp">
+      <HintPath>C:\SPEA\DLL\AtosFObp.dll</HintPath>
+    </Reference>
+    <Reference Include="AtosFWrapper, Version=8.1.4.9, Culture=neutral, processorArchitecture=x86">
+      <HintPath>packages\AtosFWrapper.8.1.4.9\lib\netstandard2.0\AtosFWrapper.dll</HintPath>
+    </Reference>
+    <Reference Include="BSL430.NET.FirmwareTools, Version=1.3.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\BSL430.NET.FirmwareTools.1.3.4\lib\net461\BSL430.NET.FirmwareTools.dll</HintPath>
+    </Reference>
+    <Reference Include="DbfDataReader, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\DbfDataReader.0.5.4\lib\net452\DbfDataReader.dll</HintPath>
+    </Reference>
+    <Reference Include="FftSharp, Version=1.1.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\FftSharp.1.1.6\lib\netstandard2.0\FftSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="INIFileParser, Version=2.5.2.0, Culture=neutral, PublicKeyToken=79af7b307b65cf3c, processorArchitecture=MSIL">
+      <HintPath>packages\ini-parser-netstandard.2.5.2\lib\net20\INIFileParser.dll</HintPath>
+    </Reference>
+    <Reference Include="MathNet.Numerics, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\MathNet.Numerics.5.0.0\lib\net48\MathNet.Numerics.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.CodeDom, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.CodeDom.7.0.0\lib\net462\System.CodeDom.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Common, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Data.Common.4.3.0\lib\net451\System.Data.Common.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TestFramework, Version=2.9.8.0, Culture=neutral, processorArchitecture=x86">
+      <HintPath>packages\TestFramework.2.9.8\lib\netstandard2.0\TestFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="TpListExplorer, Version=2.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\TpListExplorer.2.3.0\lib\netstandard2.0\TpListExplorer.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Restbus.cs" />
+    <Compile Include="TestFramework\PMX\PMXChannelMaps.cs" />
+    <Compile Include="TestFramework\TestLibrary.cs" />
+    <Compile Include="TestFramework\TestLists.cs" />
+    <Compile Include="TestFramework\TestParameters.cs" />
+    <Compile Include="TestFramework\PMX\PmxPurpose.cs" />
+    <Compile Include="TestFramework\Userflags\UserFlagMaps.cs" />
+    <Compile Include="TestFramework\Userflags\UserFlagPurpose.cs" />
+    <Compile Include="TestPlan.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\CAN Transceiver\Fct8381_CanTransceiver.cs" />
+    <Compile Include="Tests\CAN Transceiver\Fct8381_CanTransceiverHelpers.cs" />
+    <Compile Include="Tests\Decoupling\Fct8391_Decoupling.cs" />
+    <Compile Include="Tests\Fct83112_ResolverInterface.cs" />
+    <Compile Include="Tests\Fct83111_ResolverExcitationOutput.cs" />
+    <Compile Include="Tests\Fct8311_SupplyVoltagesAndCurrents.cs" />
+    <Compile Include="Tests\Fct83161_InverterSyncOut.cs" />
+    <Compile Include="Tests\Fct83151_4_096V_Ref_Voltage.cs" />
+    <Compile Include="Tests\Desautration\Fct83143_Desaturation.cs" />
+    <Compile Include="Tests\Desautration\Fct83143_DesaturationHelpers.cs" />
+    <Compile Include="Tests\Internal Supplies HV Side\Fct83142_InternalSuppliesHvSide.cs" />
+    <Compile Include="Tests\Fct83141_GateDriverMagneto.cs" />
+    <Compile Include="Tests\Fct83131_EmTemperatureMeasurements.cs" />
+    <Compile Include="Tests\Fct8312_15VMonitoring.cs" />
+    <Compile Include="Tests\Fct8313_Terminal30_Monitoring.cs" />
+    <Compile Include="Tests\Fct8314_HvFlybackConverter.cs" />
+    <Compile Include="Tests\AKS SSO Switching\Fct8341_AksSsoSwitching.cs" />
+    <Compile Include="Tests\Fct8342_HvDcMeasurementAndOvDetection.cs" />
+    <Compile Include="Tests\Fct8331_SafeStateLogic.cs" />
+    <Compile Include="Tests\Fct8351_HvInterlock.cs" />
+    <Compile Include="Tests\Fct8361_CrashDetection.cs" />
+    <Compile Include="Tests\Fct83121_AcCurrentMeasurement.cs" />
+    <Compile Include="Tests\Fct8371_ActiveDischarge.cs" />
+    <Compile Include="Tests\Fct83101_Wheelspeed.cs" />
+    <Compile Include="Tests\Internal Supplies HV Side\Fct83142_InternalSuppliesHvSideHelpers.cs" />
+    <Compile Include="Tests\SystemBasisChip\Fct8322_SystemBasisChip.cs" />
+    <Compile Include="Tests\Fct8321_5VMonitoring.cs" />
+    <Compile Include="Tests\SystemBasisChip\Fct8322_SystemBasisChipHelpers.cs" />
+    <Compile Include="Tests\AKS SSO Switching\Fct8341_AKSSSOSwitchingHelpers.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 und x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="PeakCanUds\PeakCanUds.csproj">
+      <Project>{db9df2cc-2954-4b91-8082-168294e3b887}</Project>
+      <Name>PeakCanUds</Name>
+    </ProjectReference>
+    <ProjectReference Include="PeakCanXcp\PeakCanXcp\PeakCanXcp.csproj">
+      <Project>{a86c5a20-251a-4f2e-83c9-4d1b03fa8b01}</Project>
+      <Name>PeakCanXcp</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,12 @@
+{
+  "Leo-F Settings": {
+    "Activate Offline Mode": {
+      "Description": "true or false",
+      "Value": false
+    },
+    "Bay Bridge Status": {
+      "Description": "None, TwoBaysOneCore, FourBaysTwoCores or FourBaysOneCore",
+      "Value": "None"
+    }
+  }
+}

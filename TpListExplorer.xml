@@ -1,0 +1,1151 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TpListExplorer</name>
+    </assembly>
+    <members>
+        <member name="T:TpList.Explorer.FileOperations">
+            <summary>
+            Reads from IniFile.
+            </summary>
+        </member>
+        <member name="M:TpList.Explorer.FileOperations.ReadFromIniFile(System.String,System.String,System.String@,System.String)">
+            <summary>
+            Ini-Lesen.
+            </summary>
+            <param name="section">Section.</param>
+            <param name="key">Key.</param>
+            <param name="value">Value.</param>
+            <param name="inipath">Path to Ini.</param>
+            <returns>PASS/FAIL.</returns>
+        </member>
+        <member name="T:TpList.Explorer.Net">
+            <summary>
+            Class manages nets.
+            </summary>
+        </member>
+        <member name="M:TpList.Explorer.Net.#ctor(System.String,System.Collections.Generic.List{TpList.Explorer.PinGroup})">
+            <summary>
+            Initializes a new instance of the <see cref="T:TpList.Explorer.Net"/> class.
+            </summary>
+            <param name="name">The short net name.</param>
+            <param name="pins">Pins on the net.</param>
+        </member>
+        <member name="P:TpList.Explorer.Net.Name">
+            <summary>
+            Gets or sets the NetName.
+            </summary>
+        </member>
+        <member name="P:TpList.Explorer.Net.PinGroups">
+            <summary>
+            Gets or sets the pins on the net.
+            </summary>
+        </member>
+        <member name="P:TpList.Explorer.Net.LongName">
+            <summary>
+            Gets or sets the long NetName.
+            </summary>
+        </member>
+        <member name="T:TpList.Explorer.PinGroup">
+            <summary>
+            Group of pins on the same net at the same drawing reference.
+            </summary>
+        </member>
+        <member name="M:TpList.Explorer.PinGroup.#ctor(System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:TpList.Explorer.PinGroup"/> class.
+            </summary>
+            <param name="drawRef">Name of the drawing reference.</param>
+            <param name="pins">List of pins of the same drawing reference and on the same net.</param>
+        </member>
+        <member name="P:TpList.Explorer.PinGroup.DrawRef">
+            <summary>
+            Gets or sets the Name of the drawing reference.
+            </summary>
+        </member>
+        <member name="P:TpList.Explorer.PinGroup.Pins">
+            <summary>
+            Gets or sets the List of pins of the same drawing reference and on the same net.
+            </summary>
+        </member>
+        <member name="T:TpList.Explorer.TestPoint">
+            <summary>
+            The class representing a test point entry in the TP List database.
+            </summary>
+        </member>
+        <member name="M:TpList.Explorer.TestPoint.#ctor(DbfDataReader.DbfRecord,System.Collections.Generic.IList{DbfDataReader.DbfColumn},System.Collections.Generic.List{TpList.Explorer.TpListExplorer.Site},System.Collections.Generic.List{TpList.Explorer.Net},System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TpList.Explorer.TestPoint"/> class.
+            </summary>
+            <param name="record"> A DbfRecord from the DbfTable representing the TP List database.</param>
+            <param name="columns">A delegate which returns the list of columns of the DbfTable, which represents the TP List database.</param>
+            <param name="sites">The list of sites for the UUT.</param>
+            <param name="netlitst">List of nets  for the UUT.</param>
+            <param name="topdown">Postion of UUt in fixture.</param>
+        </member>
+        <member name="T:TpList.Explorer.TestPoint.GetColumnsDelegate">
+            <summary>
+            A delegate used to get the list of columns of the DbfTable, which represents the TP List database.
+            </summary>
+            <returns>The list of columns of the DbfTable, which represents the TP List database.</returns>
+        </member>
+        <member name="T:TpList.Explorer.TestPoint.TestPointType">
+            <summary>
+            Represents the possible values for the "TP Type" attribute of the TP List.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.TestPointType.Master">
+            <summary>
+            Master.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.TestPointType.Kelvin">
+            <summary>
+            Kelvin.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.TestPointType.MasterUnpositioned">
+            <summary>
+            Master unpositioned.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.TestPointType.KelvinUnpositioned">
+            <summary>
+            Kelvin unpositioned.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.TestPointType.Dummy">
+            <summary>
+            Dummy.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.TestPointType.DummyUnpositioned">
+            <summary>
+            Dummy unpositioned.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.TestPointType.DummyBoard">
+            <summary>
+            Dummy board.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.TestPointType.DummyBoardUnpositioned">
+            <summary>
+            Dummy board unpositioned.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.TestPointType.DigitalGround">
+            <summary>
+            Digital ground.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.TestPointType.DigitalGroundUnpositioned">
+            <summary>
+            Digital ground unpositioned.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.TestPointType.Parallel">
+            <summary>
+            Parallel.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.TestPointType.ParallelUnpositioned">
+            <summary>
+            Parallel unpositioned.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.TestPointType.Power">
+            <summary>
+            Power.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.TestPointType.PowerUnpositioned">
+            <summary>
+            Power unpositioned.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.TestPointType.Buffered">
+            <summary>
+            Buffered.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.TestPointType.BufferedUnpositioned">
+            <summary>
+            Buffered unpositioned.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.TestPointType.ElectroscanMux">
+            <summary>
+            Electroscan MUX.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.TestPointType.ElectroscanDirect">
+            <summary>
+            Electroscan direct.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.TestPointType.MasterDouble">
+            <summary>
+            Msater double.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.TestPointType.KelvinDouble">
+            <summary>
+            Kelvin double.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.TestPointType.Guard">
+            <summary>
+            Guard.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.TestPointType.Digital">
+            <summary>
+            Digital.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.TestPointType.Functional">
+            <summary>
+            Functional.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.TestPointType.DigitalDifferential">
+            <summary>
+            Digital differential.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.TestPointType.MasterReduced">
+            <summary>
+            Master reduced.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.TestPointType.KelvinReduced">
+            <summary>
+            Kelvin reduced.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.TestPointType.DummyReduced">
+            <summary>
+            Dummy reduced.
+            </summary>
+        </member>
+        <member name="T:TpList.Explorer.TestPoint.ContactType">
+            <summary>
+            Represents the possible values for the "Contact" attribute of the TP List.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.ContactType.NC">
+            <summary>
+            N.C. or null.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.ContactType.ThPin">
+            <summary>
+            TH Pin.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.ContactType.SmdPin">
+            <summary>
+            SMD Pin.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.ContactType.Pad">
+            <summary>
+            Pad.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.ContactType.Via">
+            <summary>
+            Via.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.ContactType.NotMountedSmdPin">
+            <summary>
+            Not Mounted SMD Pin.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.ContactType.NotMountedThPin">
+            <summary>
+            Not Mounted TH Pin.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.ContactType.BgaPin">
+            <summary>
+            BGA Pin.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.ContactType.ConnectorThPin">
+            <summary>
+            Connector TH Pin.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.ContactType.ConnectorSmdPin">
+            <summary>
+            Connector SMD Pin.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.ContactType.TestPoint">
+            <summary>
+            Test Point.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.ContactType.Bmu">
+            <summary>
+            BMU.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.ContactType.BmuSupply">
+            <summary>
+            BMU Supply.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.ContactType.SmdIcPin">
+            <summary>
+            SMD IC Pin.
+            </summary>
+        </member>
+        <member name="T:TpList.Explorer.TestPoint.Probe">
+            <summary>
+            Represents the possible values for the "Probe Type" attribute of the TP List.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.None">
+            <summary>
+            None.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.ThreePoint">
+            <summary>
+            Three Point.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.FourPoint">
+            <summary>
+            Four Point.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.NinePoint">
+            <summary>
+            Nine Point.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Needle">
+            <summary>
+            Needle.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Sword">
+            <summary>
+            Sword.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Point">
+            <summary>
+            Point.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Cone">
+            <summary>
+            Cone.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Pyramid">
+            <summary>
+            Pyramid.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Pencil">
+            <summary>
+            Pencil.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Cup">
+            <summary>
+            Cup.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.FixedOnFlyingProbe">
+            <summary>
+            Fixed on Flying Probe.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.NztFixedOnFlyingPrb">
+            <summary>
+            NZT Fixed on Flying Prb.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.NztAnalogueFixedOnFP">
+            <summary>
+            NZT/Analogue Fixed on FP.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Ingun_GKS_100_304_150_A_30_00">
+            <summary>
+            INGUN GKS100.304.150.A.30.00.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Ingun_GKS_100_306_150_A_30_00">
+            <summary>
+            INGUN GKS100.306.150.A.30.00.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Ingun_GKS_100_291_090_A_30_00">
+            <summary>
+            INGUN GKS100.291.090.A.30.00 or INGUN GKS 100 291 090 A 30 00.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Cz_GLP1LB21_d1_22_AuCuBe_1_91">
+            <summary>
+            CZ GLP1LB21 d1.22 AuCuBe 1.91.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Cz_GLP1LB08_d0_75_AU_1_91">
+            <summary>
+            CZ GLP1LB08 d0.75 AU 1.91.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Cz_GLP1LS14_d0_75_HG_1_91">
+            <summary>
+            CZ GLP1LS14 d0.75 HG 1.91.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Ingun_GKS_050_214_050_A_20_00">
+            <summary>
+            INGUN GKS050.214.050.A.20.00
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Ingun_GKS_050_306_090_A_20_00">
+            <summary>
+            INGUN GKS050.306.090.A.20.00
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Ingun_GKS_050_306_090_A_20_00L">
+            <summary>
+            INGUN GKS050.306.090.A.20.00L
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Ingun_GKS_050_291_050_A_10_00">
+            <summary>
+            INGUN GKS 050 291 050 A 10 00.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Ingun_GKS_050_306_090_A_10_00">
+            <summary>
+            INGUN GKS 050 306 090 A 10 00.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Ingun_GKS_050_214_050_A_10_00">
+            <summary>
+            INGUN GKS 050 214 050 A 10 00.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Ingun_GKS_040_304_040_A_08_00">
+            <summary>
+            INGUN GKS 040 304 040 A 08 00.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Ingun_GKS_040_297_040_A_08_00">
+            <summary>
+            INGUN GKS 040 297 040 A 08 00.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Ingun_GKS_075_291_064_A_20_00">
+            <summary>
+            INGUN GKS 075 291 064 A 20 00.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Ingun_GKS_075_217_120_A_20_00">
+            <summary>
+            INGUN GKS 075 217 120 A 20 00.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Ingun_GKS_075_204_115_A_20_00">
+            <summary>
+            INGUN GKS 075 204 115 A 20 00.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Ingun_GKS_075_214_064_A_20_00">
+            <summary>
+            INGUN GKS 075 214 064 A 20 00.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Ingun_GKS_100_306_130_A_20_00">
+            <summary>
+            INGUN GKS 100 306 130 A 20 00.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Ingun_GKS_100_306_130_A_30_00">
+            <summary>
+            INGUN GKS 100 306 130 A 30 00.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Ingun_GKS_100_291_090_A_20_00">
+            <summary>
+            INGUN GKS 100 291 090 A 20 00.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Ingun_GKS_100_307_150_A_20_00">
+            <summary>
+            INGUN GKS 100 307 150 A 20 00.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Ingun_GKS_100_307_150_A_30_00">
+            <summary>
+            INGUN GKS 100 307 150 A 30 00.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Ingun_GKS_003_206_254_A_20_00">
+            <summary>
+            INGUN GKS 003 206 254 A 20 00.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Ingun_GKS_003_307_254_A_20_00">
+            <summary>
+            INGUN GKS 003 307 254 A 20 00.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Ingun_GKS_075_306_100_A_20_00">
+            <summary>
+            INGUN GKS 075 306 100 A 20 00.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Ingun_GKS_100_209_060_A_20_00">
+            <summary>
+            INGUN GKS 100 209 060 A 20 00.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Ingun_GKS_100_209_060_A_30_00">
+            <summary>
+            INGUN GKS 100 209 060 A 30 00.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Ingun_GKS_075_209_064_A_20_00">
+            <summary>
+            INGUN GKS 075 209 064 A 20 00.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Ingun_GKS_050_231_050_A_10_00">
+            <summary>
+            INGUN GKS 050 231 050 A 10 00.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Ingun_GKS_135_209_050_A_20_00">
+            <summary>
+            INGUN GKS 135 209 050 A 20 00.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Ingun_GKS_135_306_150_A_20_00">
+            <summary>
+            INGUN GKS 135 306 150 A 20 00.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Ingun_GKS_135_291_090_A_20_00">
+            <summary>
+            INGUN GKS 135 291 090 A 20 00.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Ingun_GKS_135_307_150_A_20_00">
+            <summary>
+            INGUN GKS 135 307 150 A 20 00.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Ingun_GKS_035_306_115_A_12_00">
+            <summary>
+            INGUN GKS 035 306 115 A 12 00.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Ingun_GKS_035_207_115_A_12_00">
+            <summary>
+            INGUN GKS 035 207 115 A 12 00.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Probe.Ingun_GKS_035_291_064_A_12_00">
+            <summary>
+            INGUN GKS 035 291 064 A 12 00.
+            </summary>
+        </member>
+        <member name="T:TpList.Explorer.TestPoint.Side">
+            <summary>
+            Represents the possible values for the "Board Side" and "Probe Side" attributes of the TP List.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Side.NotSpecified">
+            <summary>
+            Not specified.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Side.Unpositioned">
+            <summary>
+            Unpositioned.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Side.Bottom">
+            <summary>
+            Bottom.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.Side.Top">
+            <summary>
+            Top.
+            </summary>
+        </member>
+        <member name="T:TpList.Explorer.TestPoint.SourceType">
+            <summary>
+            Represents the possible values for the "Source" attribute of the TP List.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.SourceType.Automatic">
+            <summary>
+            Automatic.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.SourceType.Manual">
+            <summary>
+            Manual.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.SourceType.Superimposed">
+            <summary>
+            Superimposed.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.SourceType.Debugged">
+            <summary>
+            Debugged.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.SourceType.Validated">
+            <summary>
+            Validated.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.SourceType.Debbuged_Validated">
+            <summary>
+            Debugged &amp; Validated.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.SourceType.ForcedPositioning">
+            <summary>
+            Forced Positioning.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.SourceType.ForcedPriority">
+            <summary>
+            Forced Priority.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.SourceType.ForcedPriority_Shifted">
+            <summary>
+            Forced Priority &amp; Shifted.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.SourceType.ForcedPriority_Reduced">
+            <summary>
+            Forced Priority &amp; Reduced.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TestPoint.SourceType.ForcedPriority_Shifted_Reduced">
+            <summary>
+            Forced Priority &amp; Shifted &amp; Reduced.
+            </summary>
+        </member>
+        <member name="P:TpList.Explorer.TestPoint.TpNumber">
+            <summary>
+            Gets the "TP Number" attribute for this Test Point.
+            </summary>
+        </member>
+        <member name="P:TpList.Explorer.TestPoint.Channel">
+            <summary>
+            Gets the "Channel" attribute for this Test Point.
+            </summary>
+        </member>
+        <member name="P:TpList.Explorer.TestPoint.TpName">
+            <summary>
+            Gets the "TP Name" attribute for this Test Point.
+            </summary>
+        </member>
+        <member name="P:TpList.Explorer.TestPoint.DrawingReference">
+            <summary>
+            Gets the "Drawing Ref." attribute for this Test Point.
+            </summary>
+        </member>
+        <member name="P:TpList.Explorer.TestPoint.Pin">
+            <summary>
+            Gets the "Pin" attribute for this Test Point.
+            </summary>
+        </member>
+        <member name="P:TpList.Explorer.TestPoint.Net">
+            <summary>
+            Gets the "Net Name" attribute for this Test Point.
+            </summary>
+        </member>
+        <member name="P:TpList.Explorer.TestPoint.TpType">
+            <summary>
+            Gets the "TP Type" attribute for this Test Point.
+            </summary>
+        </member>
+        <member name="P:TpList.Explorer.TestPoint.X_mm">
+            <summary>
+            Gets the "X" attribute for this Test Point in [mm].
+            </summary>
+        </member>
+        <member name="P:TpList.Explorer.TestPoint.Y_mm">
+            <summary>
+            Gets the "Y" attribute for this Test Point in [mm].
+            </summary>
+        </member>
+        <member name="P:TpList.Explorer.TestPoint.Z_mm">
+            <summary>
+            Gets the "Z" attribute for this Test Point in [mm].
+            </summary>
+        </member>
+        <member name="P:TpList.Explorer.TestPoint.ExtraDown_mm">
+            <summary>
+            Gets the "Extra Down" attribute for this Test Point in [mm].
+            </summary>
+        </member>
+        <member name="P:TpList.Explorer.TestPoint.Contact">
+            <summary>
+            Gets the "Contact" attribute for this Test Point.
+            </summary>
+        </member>
+        <member name="P:TpList.Explorer.TestPoint.ProbeType">
+            <summary>
+            Gets the "Probe Type" attribute for this Test Point.
+            </summary>
+        </member>
+        <member name="P:TpList.Explorer.TestPoint.ProbeMeasure">
+            <summary>
+            Gets the "Probe Measure" attribute for this Test Point.
+            </summary>
+        </member>
+        <member name="P:TpList.Explorer.TestPoint.Checked">
+            <summary>
+            Gets a value indicating whether the "Checked" attribute for this Test Point is or isn't set.
+            </summary>
+        </member>
+        <member name="P:TpList.Explorer.TestPoint.ProbeSide">
+            <summary>
+            Gets the "Probe Side" attribute for this Test Point.
+            </summary>
+        </member>
+        <member name="P:TpList.Explorer.TestPoint.Source">
+            <summary>
+            Gets the "Source" attribute for this Test Point.
+            </summary>
+        </member>
+        <member name="P:TpList.Explorer.TestPoint.BoardSide">
+            <summary>
+            Gets the "Board Side" attribute for this Test Point.
+            </summary>
+        </member>
+        <member name="P:TpList.Explorer.TestPoint.IsPositioned">
+            <summary>
+            Gets a value indicating whether the Test Point is positioned or not.
+            </summary>
+        </member>
+        <member name="P:TpList.Explorer.TestPoint.Site">
+            <summary>
+            Gets the site of the TP in a panel of boards.
+            </summary>
+        </member>
+        <member name="P:TpList.Explorer.TestPoint.Bay">
+            <summary>
+            Gets the Bay which is responsible for testing the UUT that contains this testpoint.
+            </summary>
+        </member>
+        <member name="P:TpList.Explorer.TestPoint.Columns">
+            <summary>
+            Gets or sets the columns of the DbfTable representing the Test Point database.
+            </summary>
+        </member>
+        <member name="M:TpList.Explorer.TestPoint.GetObjectFrom(DbfDataReader.DbfRecord,System.String)">
+            <summary>
+            Retrieves the value of a record's attribute using its column name.
+            </summary>
+            <param name="record">The record used to extract the value.</param>
+            <param name="name">The name of the column from which the value should be extracted.</param>
+            <returns>The value as a C#-Object. It must be casted to its correspondent type later.</returns>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException">Thrown when the column name wasn't found in the database.</exception>
+        </member>
+        <member name="M:TpList.Explorer.TestPoint.GetTpNumberFrom(DbfDataReader.DbfRecord)">
+            <summary>
+            Retrieves the  value of the "TP Number" attribute from a record.
+            </summary>
+            <param name="record">The record used to extract the value.</param>
+            <returns>The TP Number as an integer.</returns>
+        </member>
+        <member name="M:TpList.Explorer.TestPoint.GetTpNameFrom(DbfDataReader.DbfRecord)">
+            <summary>
+            Retrieves the value of the "TP Name" attribute from a record.
+            </summary>
+            <param name="record">The record used to extract the value.</param>
+            <returns>The TP Name as a string. If no value was found, an empty string is returned instead.</returns>
+        </member>
+        <member name="M:TpList.Explorer.TestPoint.GetDrawingReferenceFrom(DbfDataReader.DbfRecord)">
+            <summary>
+            Retrieves the value of the "Drawing Ref." attribute from a record.
+            </summary>
+            <param name="record">The record used to extract the value.</param>
+            <returns>The Drawing Reference as a string. If no value was found, an empty string is returned instead.</returns>
+        </member>
+        <member name="M:TpList.Explorer.TestPoint.GetPinNameFrom(DbfDataReader.DbfRecord)">
+            <summary>
+            Retrieves the value of the "Pin" attribute from a record.
+            </summary>
+            <param name="record">The record used to extract the value.</param>
+            <returns>The Pin Name as a string. If no value was found, an empty string is returned instead.</returns>
+        </member>
+        <member name="M:TpList.Explorer.TestPoint.GetNetNameFrom(DbfDataReader.DbfRecord,System.Collections.Generic.List{TpList.Explorer.Net})">
+            <summary>
+            Retrieves the value of the "Net Name" attribute from a record.
+            </summary>
+            <param name="record">The record used to extract the value.</param>
+            <param name="netlist">The List of Nets on UUt.</param>
+            <returns>The Net Name as a string.</returns>
+        </member>
+        <member name="M:TpList.Explorer.TestPoint.GetXFrom(DbfDataReader.DbfRecord)">
+            <summary>
+            Retrieves the value of the "X" attribute from a record.
+            </summary>
+            <param name="record">The record used to extract the value.</param>
+            <returns>The value of X in mm as a double or null if no value was found.</returns>
+        </member>
+        <member name="M:TpList.Explorer.TestPoint.GetYFrom(DbfDataReader.DbfRecord)">
+            <summary>
+            Retrieves the value of the "Y" attribute from a record.
+            </summary>
+            <param name="record">The record used to extract the value.</param>
+            <returns>The value of Y in mm as a double or null if no value was found.</returns>
+        </member>
+        <member name="M:TpList.Explorer.TestPoint.GetProbeMeasureFrom(DbfDataReader.DbfRecord)">
+            <summary>
+            Retrieves the value of the "Probe Measure" attribute from a record.
+            </summary>
+            <param name="record">The record used to extract the value.</param>
+            <returns>The value of the Probe Measure as a double or null if no value was found.</returns>
+        </member>
+        <member name="M:TpList.Explorer.TestPoint.GetChannelFrom(DbfDataReader.DbfRecord)">
+            <summary>
+            Retrieves the value of the "Channel" attribute from a record.
+            </summary>
+            <param name="record">The record used to extract the value.</param>
+            <returns>The value of Channel as an integer or null if no value was found.</returns>
+        </member>
+        <member name="M:TpList.Explorer.TestPoint.GetZFrom(DbfDataReader.DbfRecord)">
+            <summary>
+            Retrieves the value of the "Z" attribute from a record.
+            </summary>
+            <param name="record">The record used to extract the value.</param>
+            <returns>The value of Z in mm as a double or null if no value was found.</returns>
+        </member>
+        <member name="M:TpList.Explorer.TestPoint.GetExtraDownFrom(DbfDataReader.DbfRecord)">
+            <summary>
+            Retrieves the value of the "Extra Down" attribute from a record.
+            </summary>
+            <param name="record">The record used to extract the value.</param>
+            <returns>The value of Extra Down in mm as a double or null if no value was found.</returns>
+        </member>
+        <member name="M:TpList.Explorer.TestPoint.GetCheckedFrom(DbfDataReader.DbfRecord)">
+            <summary>
+            Retrieves the value of the "Checked" attribute from a record.
+            </summary>
+            <param name="record">The record used to extract the value.</param>
+            <returns>The value of Checked as a boolean.</returns>
+        </member>
+        <member name="M:TpList.Explorer.TestPoint.GetSideFrom(DbfDataReader.DbfRecord,System.String)">
+            <summary>
+            Retrieves the value of the "Board Side" or "Probe Side" attributes from a record, based on the column name passed to it.
+            </summary>
+            <param name="record">The record used to extract the value.</param>
+            <param name="column">The name column name, which can be either "BOARD_SIDE" or "ACCESS_SID".</param>
+            <returns>The retrived value as an enumeration.</returns>
+            <exception cref="T:System.ArgumentException">Thrown when the column argument differs from "BOARD_SIDE" or "ACCESS_SID".</exception>
+        </member>
+        <member name="M:TpList.Explorer.TestPoint.GetBoardSideFrom(DbfDataReader.DbfRecord)">
+            <summary>
+            Retrieves the value of the "Board Side" attribute from a record.
+            </summary>
+            <param name="record">The record used to extract the value.</param>
+            <returns>The value of Board Side as an enumeration.</returns>
+        </member>
+        <member name="M:TpList.Explorer.TestPoint.GetProbeSideFrom(DbfDataReader.DbfRecord,System.Boolean)">
+            <summary>
+            Retrieves the value of the "Probe Side" attribute from a record.
+            </summary>
+            <param name="record">The record used to extract the value.</param>
+            <param name="topdown">Postion of UUT in fixture.</param>
+            <returns>The value of Probe Side as an enumeration.</returns>
+        </member>
+        <member name="M:TpList.Explorer.TestPoint.GetContactFrom(DbfDataReader.DbfRecord)">
+            <summary>
+            Retrieves the value of the "Contact" attribute from a record.
+            </summary>
+            <param name="record">The record used to extract the value.</param>
+            <returns>The value of Contact as an enumeration.</returns>
+        </member>
+        <member name="M:TpList.Explorer.TestPoint.GetSourceFrom(DbfDataReader.DbfRecord)">
+            <summary>
+            Retrieves the value of the "Source" attribute from a record.
+            </summary>
+            <param name="record">The record used to extract the value.</param>
+            <returns>The value of Source as an enumeration.</returns>
+        </member>
+        <member name="M:TpList.Explorer.TestPoint.GetTpTypeFrom(DbfDataReader.DbfRecord)">
+            <summary>
+            Retrieves the value of the "TP Type" attribute from a record.
+            </summary>
+            <param name="record">The record used to extract the value.</param>
+            <returns>The value of TP Type as an enumeration.</returns>
+        </member>
+        <member name="M:TpList.Explorer.TestPoint.GetProbeTypeFrom(DbfDataReader.DbfRecord)">
+            <summary>
+            Retrieves the value of the "Probe Type" attribute from a record.
+            </summary>
+            <param name="record">The record used to extract the value.</param>
+            <returns>The value of Probe Type as an enumeartion.</returns>
+        </member>
+        <member name="T:TpList.Explorer.TpListExplorer">
+            <summary>
+            The main TpListExplorer class.
+            Contains methods and properties to support accessing the TP List database of a Leonardo project.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TpListExplorer.NetInfoFileName">
+            <summary>
+            A constant holding the name of the database that will be used to get the Long Netnames.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TpListExplorer.NetListFileName">
+            <summary>
+            A constant holding the name of the database that will be used to get the Pin - Net Relation.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TpListExplorer.TpListFileName">
+            <summary>
+            A constant holding the name of the database that will be used to populate the TP List.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TpListExplorer.PanelFileName">
+            <summary>
+            A constant holding the name of the database that will be used to find out the site of each TP.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TpListExplorer.TempCopyDiff">
+            <summary>
+            A constant containing a distinguishing string that is appended to the original filename when a temporary copy is created.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TpListExplorer.netInfoExists">
+            <summary>
+            If no NetInfo exists no long net names can be read.
+            </summary>
+        </member>
+        <member name="F:TpList.Explorer.TpListExplorer.topDown">
+            <summary>
+            Is true if the board is positioned topdown inside the adapter.
+            </summary>
+        </member>
+        <member name="M:TpList.Explorer.TpListExplorer.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TpList.Explorer.TpListExplorer"/> class, by passing the TPGM Path as returned
+            by the TpgmPathRead() function, which is found in the class modAtosF2 of the AtosF's dll.
+            </summary>
+            <param name="tpgmPath">
+            A string to the TPGM Path as returned by the TpgmPathRead() function in class modAtosF2 of the AtosF's dll.
+            Example: "C:\Leonardo\TPRJ110\PRJ\TPGM_FOLDER\TPGM\PROGRAM\".
+            </param>
+            <exception cref="T:System.IO.FileNotFoundException">Thrown when TPLIST database wasn't found.</exception>
+            <exception cref="T:System.FormatException">Thrown when database does not have the expected format.</exception>
+        </member>
+        <member name="P:TpList.Explorer.TpListExplorer.TpgmPath">
+            <summary>
+            Gets or sets the path to the ..\PRJ\TPGM_FOLDER\TPGM\PROGRAM\ folder of a Leonardo project.
+            </summary>
+        </member>
+        <member name="P:TpList.Explorer.TpListExplorer.SiteCount">
+            <summary>
+            Gets the number of sites of the UUT.
+            </summary>
+        </member>
+        <member name="P:TpList.Explorer.TpListExplorer.SiteOffset">
+            <summary>
+            Gets the base offset between the same test point in different sites.
+            </summary>
+        </member>
+        <member name="P:TpList.Explorer.TpListExplorer.Adaptertpath">
+            <summary>
+            Gets the path to the ..\ADAPTER\TPGM_FOLDER\TPGM\ folder of a Leonardo project.
+            </summary>
+        </member>
+        <member name="P:TpList.Explorer.TpListExplorer.Boardpath">
+            <summary>
+            Gets the path to the ..\BOARD\TPGM_FOLDER\TPGM\ folder of a Leonardo project.
+            </summary>
+        </member>
+        <member name="P:TpList.Explorer.TpListExplorer.TpList">
+            <summary>
+            Gets the test point list, containing all test points found in the database.
+            </summary>
+        </member>
+        <member name="P:TpList.Explorer.TpListExplorer.Sites">
+            <summary>
+            Gets the list of site offsets. The first element of the Tupel is the site and the sencond one
+            is the corresponding offset.
+            </summary>
+        </member>
+        <member name="P:TpList.Explorer.TpListExplorer.NetList">
+            <summary>
+            Gets the list of the netname and long netname relation and Pin-relation.
+            </summary>
+        </member>
+        <member name="P:TpList.Explorer.TpListExplorer.TpListFileCopyName">
+            <summary>
+            Gets the name of a temporary file created by us, used to access the TP-list database without disturbing external activities.
+            </summary>
+        </member>
+        <member name="P:TpList.Explorer.TpListExplorer.NetInfoFileCopyName">
+            <summary>
+            Gets the name of a temporary file created by us, used to access the NetIno database without disturbing external activities.
+            </summary>
+        </member>
+        <member name="P:TpList.Explorer.TpListExplorer.NetListFileCopyName">
+            <summary>
+            Gets the name of a temporary file created by us, used to access the NetList database without disturbing external activities.
+            </summary>
+        </member>
+        <member name="P:TpList.Explorer.TpListExplorer.PanelFileCopyName">
+            <summary>
+            Gets the name of a temporary file created by us, used to access the panel database without disturbing external activities.
+            </summary>
+        </member>
+        <member name="M:TpList.Explorer.TpListExplorer.GetChannel(System.Int32)">
+            <summary>
+            Gets the Channel assigned to a Test Point.
+            </summary>
+            <param name="tpNumber">The Test Point number.</param>
+            <returns>
+            The Channel assigned to the Test Point or null if either the Test Point wasn't found or no
+            Channel was assigned to it.
+            </returns>
+        </member>
+        <member name="M:TpList.Explorer.TpListExplorer.GetChannel(System.Int32[])">
+            <summary>
+            Gets the Channels of multiple Test Points.
+            </summary>
+            <param name="tpNumbers">A list of test point numbers from which the assigned channels are to be retrieved.</param>
+            <returns>
+            A list containing the Channels assigned to the Test Points in the same order.
+            The value of an element is null, if either no Channel was assigned to the TP or TP couldn't be found.
+            </returns>
+        </member>
+        <member name="M:TpList.Explorer.TpListExplorer.GetTpsInSameNet(System.Int32)">
+            <summary>
+            Gets a list of all Test Points that are in the same site and net as a Test Point (inclusive this one).
+            </summary>
+            <param name="tpNumber">Test Point number of the TP used as reference.</param>
+            <returns>
+            A list of all Test Points in the same net as the reference TP (inclusive itself)
+            or an empty List if TP with the given number can't be found.
+            </returns>
+        </member>
+        <member name="M:TpList.Explorer.TpListExplorer.GetTpsInSameNet(System.String,System.Int32)">
+            <summary>
+            Gets a list of all Test Points of a site that are in the same net.
+            </summary>
+            <param name="netName">Name of the net.</param>
+            <param name="site">Site number.</param>
+            <returns>
+            A list of all Test Points of a site that are in the same net or an empty List if net
+            name can't be found or site number isn't valid.
+            </returns>
+        </member>
+        <member name="M:TpList.Explorer.TpListExplorer.GetTp(System.Int32)">
+            <summary>
+            Gets the Test Point with the given TP Number.
+            </summary>
+            <param name="tpNumber">The TP Number.</param>
+            <returns>The Test Point or null if TP with given TP number wasn't found.</returns>
+        </member>
+        <member name="M:TpList.Explorer.TpListExplorer.GetTp(System.Int32[])">
+            <summary>
+            Gets a list of the Test Points with the given TP numbers.
+            </summary>
+            <param name="tpNumbers">The TP Numbers.</param>
+            <returns>A list of the Test Points or an empty list if TPs with given TP numbers weren't found.</returns>
+        </member>
+        <member name="M:TpList.Explorer.TpListExplorer.GetPositionedTps">
+            <summary>
+            Gets list of Test Points from all sites that are positioned.
+            </summary>
+            <returns>List of positioned Test Points from all sites.</returns>
+        </member>
+        <member name="M:TpList.Explorer.TpListExplorer.GetPositionedTps(System.Int32)">
+            <summary>
+            Gets list of Test Points from a single site that are positioned.
+            </summary>
+            <param name="site">Site number.</param>
+            <returns>List of positioned Test Points from the specified site.</returns>
+        </member>
+        <member name="M:TpList.Explorer.TpListExplorer.GetBoardUpSide(System.String)">
+            <summary>
+            Reads the the Adapter Ini to get the Board Postioning inside the fixture.
+            </summary>
+            <param name="adaptertpath">Path of the Adapter folder of the uut.</param>
+        </member>
+        <member name="M:TpList.Explorer.TpListExplorer.PopulateNetPinRealtion(DbfDataReader.DbfTable)">
+            <summary>
+            It populates the list of sites by extracting the data of the netlist database.
+            </summary>
+            <param name="netListTable">A DbfTable instance representing the netlist database.</param>
+        </member>
+        <member name="M:TpList.Explorer.TpListExplorer.PopulateLongNetName(DbfDataReader.DbfTable)">
+            <summary>
+            It populates the list of sites by extracting the data of the netinfo database.
+            </summary>
+            <param name="netinfoTable">A DbfTable instance representing the netinfo database.</param>
+        </member>
+        <member name="M:TpList.Explorer.TpListExplorer.PopulateSites(DbfDataReader.DbfTable)">
+            <summary>
+            It populates the list of sites by extracting the data of the panel database.
+            </summary>
+            <param name="panelTable">A DbfTable instance representing the panel database.</param>
+        </member>
+        <member name="M:TpList.Explorer.TpListExplorer.PopulateTpList(DbfDataReader.DbfTable)">
+            <summary>
+            This methods goes through each record in a DbfTable using them to create instances of TestPoint objects,
+            that are then added to the TpList. The DbfTable must have the format used by Leonardo to create the test point list.
+            </summary>
+            <param name="tpListTable"> A DbfTable instance representing the test point list database.</param>
+            <exception cref="T:System.FormatException">Thrown when database does not have the expected format.</exception>
+        </member>
+        <member name="T:TpList.Explorer.TpListExplorer.Site">
+            <summary>
+            It represents a site of the UUT.
+            </summary>
+        </member>
+        <member name="M:TpList.Explorer.TpListExplorer.Site.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TpList.Explorer.TpListExplorer.Site"/> class.
+            </summary>
+            <param name="siteNumber">The site number.</param>
+            <param name="siteOffset">The specific site offset.</param>
+            <param name="bay">The bay responsible for testing the site.</param>
+        </member>
+        <member name="P:TpList.Explorer.TpListExplorer.Site.SiteNumber">
+            <summary>
+            Gets or sets the site number.
+            </summary>
+        </member>
+        <member name="P:TpList.Explorer.TpListExplorer.Site.SiteOffset">
+            <summary>
+            Gets or sets the specific site offset.
+            </summary>
+        </member>
+        <member name="P:TpList.Explorer.TpListExplorer.Site.Bay">
+            <summary>
+            Gets or sets the bay responsible for testing the site.
+            </summary>
+        </member>
+    </members>
+</doc>
