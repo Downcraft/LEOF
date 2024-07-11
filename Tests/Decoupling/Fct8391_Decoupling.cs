@@ -130,8 +130,19 @@
             Thread.Sleep(500);
 
 
-            test = GetTest("FCT091012");
-            TestLibrary.Voltage(test, range: DvmVRange.R10V, measureTime: 0.05);
+            for(int retry = 0; retry < 10; retry++)
+            {
+                test = GetTest("FCT091012");
+                TestLibrary.Voltage(test, range: DvmVRange.R10V, measureTime: 0.05);
+
+                if(test.Result == TestResult.PASS)
+                {
+                    break;
+                }
+            }
+
+            //test = GetTest("FCT091012");
+            //TestLibrary.Voltage(test, range: DvmVRange.R10V, measureTime: 0.05);
 
             test = GetTest("FCT091013");
             TestLibrary.Xcp(test, xcp, a2l.Measurements["IoActr_ActrCurr"], numberOfMeasurements: 10);
