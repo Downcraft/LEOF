@@ -70,7 +70,7 @@
                 .HasStimuliOn(new StimulusConfig(StimulusId.BSTI1, 13.5, 2, useSense: true))
             );
 
-            Thread.Sleep(100);
+            Thread.Sleep(500);
             xcp.Connect();
             Thread.Sleep(100);
 
@@ -162,7 +162,7 @@
 
             testEnvironment.Reset();
 
-            Thread.Sleep(2000);
+            Thread.Sleep(3000);
 
             testEnvironment.Set(state => state
                .HasFpsOn(FpsId.FPS4)
@@ -170,7 +170,7 @@
                .HasStimuliOn(new StimulusConfig(StimulusId.BSTI1, 13.5, 2, useSense: true))
            );
 
-            Thread.Sleep(100);
+            Thread.Sleep(500);
             xcp.Connect();
             Thread.Sleep(100);
 

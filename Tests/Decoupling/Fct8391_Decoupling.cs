@@ -63,7 +63,7 @@
                 .HasStimuliOn(new StimulusConfig(StimulusId.BSTI1, 13.5, 3.0, useSense: true))
             );
 
-            Thread.Sleep(200);
+            Thread.Sleep(500);
             xcp.Connect();
             Thread.Sleep(100);
 
