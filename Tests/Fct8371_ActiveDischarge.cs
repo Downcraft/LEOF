@@ -58,7 +58,7 @@
             test = GetTest("FCT071001");
             TestLibrary.Voltage(test);
 
-            xcp.Connect();
+            //xcp.Connect();
             Thread.Sleep(50);
 
             xcp.Download(a2l.Characteristics["HwTest_cActvDchrgDisOvrrdEn"], new List<byte> { 0x00 });
