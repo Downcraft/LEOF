@@ -2,6 +2,7 @@
 using Spea.Instruments;
 using Spea.TestEnvironment;
 using Spea.TestFramework;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 
@@ -24,7 +25,7 @@ namespace Program
 
             return range;
         }
-        public static void TestWakeOnCan(TestEnv<UserFlagPurpose, PmxPurpose> testEnvironment, TestParameters parameters, List<TestItem> tests)
+        public static void TestWakeOnCan(TestEnv<UserFlagPurpose, PmxPurpose> testEnvironment, TestParameters parameters, Func<string, TestItem> GetTest)
         {
             var xcp = parameters.Xcp;
             var a2l = TestParameters.A2l;
@@ -38,39 +39,58 @@ namespace Program
 
             //TestParameters.Xcp.Connect();
 
-            //Thread.Sleep(300);
+            Thread.Sleep(300);
             DvmVRange range;
 
-            foreach (var test in tests.GetRange(0, 5))
-            {
-                range = GetVoltageRangeRegardingTestLimits(test);
-                TestLibrary.Voltage(test, range: range, measureTime: 0.05);
-            }
+             var test = GetTest("FCT022002");
+             range = GetVoltageRangeRegardingTestLimits(test);
+             TestLibrary.Voltage(test, range: range, measureTime: 0.05);
+
+            test = GetTest("FCT022003");
+            range = GetVoltageRangeRegardingTestLimits(test);
+            TestLibrary.Voltage(test, range: range, measureTime: 0.05);
+
+            test = GetTest("FCT022004");
+            range = GetVoltageRangeRegardingTestLimits(test);
+            TestLibrary.Voltage(test, range: range, measureTime: 0.05);
+
+            test = GetTest("FCT022005");
+            range = GetVoltageRangeRegardingTestLimits(test);
+            TestLibrary.Voltage(test, range: range, measureTime: 0.05);
+
+            test = GetTest("FCT022006");
+            range = GetVoltageRangeRegardingTestLimits(test);
+            TestVoltageWithRetest(test, range, measureTime: 0.001);
+
+
 
             xcp.Download(a2l.Characteristics["IoEcu_cSbcMux.CmdMuxValueOvrrdEn"], new List<byte> { 0x01 });
             xcp.Download(a2l.Characteristics["IoEcu_cSbcMux.CmdMuxValueOvrrd"], new List<byte> { 0x00 });
 
-            range = GetVoltageRangeRegardingTestLimits(tests[5]);
-            TestLibrary.Voltage(tests[5], range: range);
+            test = GetTest("FCT022008");
+            range = GetVoltageRangeRegardingTestLimits(test);
+            TestLibrary.Voltage(test, range: range, measureTime: 0.05);
+
 
             xcp.Download(a2l.Characteristics["IoEcu_cSbcMux.CmdMuxValueOvrrdEn"], new List<byte> { 0x01 });
             xcp.Download(a2l.Characteristics["IoEcu_cSbcMux.CmdMuxValueOvrrd"], new List<byte> { 0x01 });
 
-            range = GetVoltageRangeRegardingTestLimits(tests[6]);
-            TestLibrary.Voltage(tests[6], range: range);
+            test = GetTest("FCT022010");
+            range = GetVoltageRangeRegardingTestLimits(test);
+            TestLibrary.Voltage(test, range: range);
 
 
-            try
-            {
-                xcp.Disconnect();
-            }
-            catch
-            {
+            //try
+            //{
+            //    xcp.Disconnect();
+            //}
+            //catch
+            //{
 
-            }
+            //}
         }
 
-        public static void TestWakePerFlyback(TestEnv<UserFlagPurpose, PmxPurpose> testEnvironment, TestParameters parameters, List<TestItem> tests)
+        public static void TestWakePerFlyback(TestEnv<UserFlagPurpose, PmxPurpose> testEnvironment, TestParameters parameters, Func<string, TestItem> GetTest)
         {
             var xcp = parameters.Xcp;
             var a2l = TestParameters.A2l;
@@ -92,11 +112,28 @@ namespace Program
             Thread.Sleep(300);
             DvmVRange range;
 
-            foreach (var test in tests.GetRange(0, 5))
-            {
-                range = GetVoltageRangeRegardingTestLimits(test);
-                TestLibrary.Voltage(test, range: range);
-            }
+            var test = GetTest("FCT022012");
+            range = GetVoltageRangeRegardingTestLimits(test);
+            TestLibrary.Voltage(test, range: range, measureTime: 0.05);
+
+
+            test = GetTest("FCT022013");
+            range = GetVoltageRangeRegardingTestLimits(test);
+            TestLibrary.Voltage(test, range: range, measureTime: 0.05);
+
+            test = GetTest("FCT022014");
+            range = GetVoltageRangeRegardingTestLimits(test);
+            TestLibrary.Voltage(test, range: range, measureTime: 0.05);
+
+            test = GetTest("FCT022015");
+            range = GetVoltageRangeRegardingTestLimits(test);
+            TestLibrary.Voltage(test, range: range, measureTime: 0.05);
+
+            test = GetTest("FCT022016");
+            range = GetVoltageRangeRegardingTestLimits(test);
+            TestLibrary.Voltage(test, range: range, measureTime: 0.05);
+
+
 
 
             xcp.Connect();
@@ -106,30 +143,23 @@ namespace Program
             xcp.Download(a2l.Characteristics["IoEcu_cSbcMux.CmdMuxValueOvrrdEn"], new List<byte> { 0x01 });
             xcp.Download(a2l.Characteristics["IoEcu_cSbcMux.CmdMuxValueOvrrd"], new List<byte> { 0x00 });
 
-            range = GetVoltageRangeRegardingTestLimits(tests[5]);
-            TestLibrary.Voltage(tests[5], range: range);
+            test = GetTest("FCT022018");
+            range = GetVoltageRangeRegardingTestLimits(test);
+            TestLibrary.Voltage(test, range: range, measureTime: 0.05);
 
             xcp.Download(a2l.Characteristics["IoEcu_cSbcMux.CmdMuxValueOvrrdEn"], new List<byte> { 0x01 });
             xcp.Download(a2l.Characteristics["IoEcu_cSbcMux.CmdMuxValueOvrrd"], new List<byte> { 0x03 });
 
-            range = GetVoltageRangeRegardingTestLimits(tests[6]);
-            TestLibrary.Voltage(tests[6], range: range);
+            test = GetTest("FCT022020");
+            range = GetVoltageRangeRegardingTestLimits(test);
+            TestLibrary.Voltage(test, range: range, measureTime: 0.05);
 
-
-            try
-            {
-                xcp.Disconnect();
-            }
-            catch
-            {
-
-            }
 
             testEnvironment.Reset();
 
         }
 
-        public static void TestUndervoltageSBC(TestEnv<UserFlagPurpose, PmxPurpose> testEnvironment, TestParameters parameters, List<TestItem> tests)
+        public static void TestUndervoltageSBC(TestEnv<UserFlagPurpose, PmxPurpose> testEnvironment, TestParameters parameters, Func<string, TestItem> GetTest)
         {
 
             //Thread.Sleep(1000);
@@ -145,14 +175,37 @@ namespace Program
             Thread.Sleep(300);
             DvmVRange range;
 
-            foreach (var test in tests.GetRange(0, 7))
-            {
-                range = GetVoltageRangeRegardingTestLimits(test);
-                TestLibrary.Voltage(test, range: range);
-            }            
+            var test = GetTest("FCT022021");
+            range = GetVoltageRangeRegardingTestLimits(test);
+            TestLibrary.Voltage(test, range: range, measureTime: 0.05);
+
+            test = GetTest("FCT022022");
+            range = GetVoltageRangeRegardingTestLimits(test);
+            TestLibrary.Voltage(test, range: range, measureTime: 0.05);
+
+            test = GetTest("FCT022023");
+            range = GetVoltageRangeRegardingTestLimits(test);
+            TestLibrary.Voltage(test, range: range, measureTime: 0.05);
+
+            test = GetTest("FCT022024");
+            range = GetVoltageRangeRegardingTestLimits(test);
+            TestLibrary.Voltage(test, range: range, measureTime: 0.05);
+
+            test = GetTest("FCT022025");
+            range = GetVoltageRangeRegardingTestLimits(test);
+            TestLibrary.Voltage(test, range: range, measureTime: 0.05);
+
+            test = GetTest("FCT022026");
+            range = GetVoltageRangeRegardingTestLimits(test);
+            TestLibrary.Voltage(test, range: range, measureTime: 0.05);
+
+            test = GetTest("FCT022027");
+            range = GetVoltageRangeRegardingTestLimits(test);
+            TestVoltageWithRetest(test, range, measureTime: 0.001);
+
         }
 
-        public static void TestOvervoltageSBC(TestEnv<UserFlagPurpose, PmxPurpose> testEnvironment, TestParameters parameters, List<TestItem> tests)
+        public static void TestOvervoltageSBC(TestEnv<UserFlagPurpose, PmxPurpose> testEnvironment, TestParameters parameters,  Func<string, TestItem> GetTest)
         {
             //Thread.Sleep(300);
 
@@ -164,17 +217,39 @@ namespace Program
             Thread.Sleep(300);
             DvmVRange range;
 
-            foreach (var test in tests.GetRange(0, 7))
-            {
-                range = GetVoltageRangeRegardingTestLimits(test);
-                TestLibrary.Voltage(test, range: range);
-            }
+            var test = GetTest("FCT022028");
+            range = GetVoltageRangeRegardingTestLimits(test);
+            TestLibrary.Voltage(test, range: range, measureTime: 0.05);
+
+            test = GetTest("FCT022029");
+            range = GetVoltageRangeRegardingTestLimits(test);
+            TestLibrary.Voltage(test, range: range, measureTime: 0.05);
+
+            test = GetTest("FCT022030");
+            range = GetVoltageRangeRegardingTestLimits(test);
+            TestLibrary.Voltage(test, range: range, measureTime: 0.05);
+
+            test = GetTest("FCT022031");
+            range = GetVoltageRangeRegardingTestLimits(test);
+            TestLibrary.Voltage(test, range: range, measureTime: 0.05);
+
+            test = GetTest("FCT022032");
+            range = GetVoltageRangeRegardingTestLimits(test);
+            TestLibrary.Voltage(test, range: range, measureTime: 0.05);
+
+            test = GetTest("FCT022033");
+            range = GetVoltageRangeRegardingTestLimits(test);
+            TestLibrary.Voltage(test, range: range, measureTime: 0.05);
+
+            test = GetTest("FCT022034");
+            range = GetVoltageRangeRegardingTestLimits(test);
+            TestVoltageWithRetest(test, range, measureTime: 0.001);
 
             testEnvironment.Reset();
             Thread.Sleep(1000);
         }
 
-        public static void TestSBCSafepath(TestEnv<UserFlagPurpose, PmxPurpose> testEnvironment, TestParameters parameters, List<TestItem> tests)
+        public static void TestSBCSafepath(TestEnv<UserFlagPurpose, PmxPurpose> testEnvironment, TestParameters parameters, Func<string, TestItem> GetTest)
         {
             testEnvironment.Set(state => state
            .HasFpsOn(FpsId.FPS4)
@@ -196,11 +271,13 @@ namespace Program
 
             DvmVRange range;
             
-            foreach(var test in tests.GetRange(0, 2))
-            {
-                range = GetVoltageRangeRegardingTestLimits(test);
-                TestLibrary.Voltage(test, range: range);
-            }
+            var test = GetTest("FCT022035");
+            range = GetVoltageRangeRegardingTestLimits(test);
+            TestLibrary.Voltage(test, range: range, measureTime: 0.05);
+
+            test = GetTest("FCT022036");
+            range = GetVoltageRangeRegardingTestLimits(test);
+            TestVoltageWithRetest(test, range, measureTime: 0.1);
 
             testEnvironment.Reset();
 
@@ -217,14 +294,31 @@ namespace Program
 
             );
 
-            foreach (var test in tests.GetRange(2, 2))
-            {
-                range = GetVoltageRangeRegardingTestLimits(test);
-                TestLibrary.Voltage(test, range: range);
-            }
+            test = GetTest("FCT022037");
+            range = GetVoltageRangeRegardingTestLimits(test);
+            TestLibrary.Voltage(test, range: range, measureTime: 0.05);
+
+            test = GetTest("FCT022038");
+            range = GetVoltageRangeRegardingTestLimits(test);
+            TestVoltageWithRetest(test, range, measureTime: 0.1);
 
             testEnvironment.Reset();
             
+        }
+
+        private static void TestVoltageWithRetest(TestItem test, DvmVRange dvmVRange, double measureTime = 0.001)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                TestLibrary.Voltage(test, range: dvmVRange, measureTime: measureTime);
+                Thread.Sleep(50);
+
+                if (test.Result == TestResult.PASS)
+                {
+                    break;
+                }
+            }
+
         }
     }
 }

@@ -79,7 +79,7 @@
             Thread.Sleep(25);
 
             xcp.Download(a2l.Characteristics["HwTest_cT30RppSwdEnOvrrd"], new List<byte> { 0x01 });
-            Thread.Sleep(25);
+            Thread.Sleep(300);
 
             test = GetTest("FCT091006");
             TestLibrary.Voltage(test);

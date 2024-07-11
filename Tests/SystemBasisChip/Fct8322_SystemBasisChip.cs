@@ -64,69 +64,17 @@
         {
 
             testEnvironment.Reset();
-            Thread.Sleep(1000);
-
-            var tests = new List<TestItem> 
-            { 
-                GetTest("FCT022002"),
-                GetTest("FCT022003"),
-                GetTest("FCT022004"), 
-                GetTest("FCT022005"),
-                GetTest("FCT022006"), 
-                GetTest("FCT022008"), 
-                GetTest("FCT022010") 
-            };
+            Thread.Sleep(1000);           
             
-            Fct8322_SystemBasisChipHelpers.TestWakeOnCan(testEnvironment, parameters, tests);
+            Fct8322_SystemBasisChipHelpers.TestWakeOnCan(testEnvironment, parameters, GetTest);
 
-            tests = new List<TestItem>
-            {
-                GetTest("FCT022012"),
-                GetTest("FCT022013"),
-                GetTest("FCT022014"),
-                GetTest("FCT022015"),
-                GetTest("FCT022016"),
-                GetTest("FCT022018"),
-                GetTest("FCT022020"),
-            };
+            Fct8322_SystemBasisChipHelpers.TestWakePerFlyback(testEnvironment, parameters, GetTest);           
 
-            Fct8322_SystemBasisChipHelpers.TestWakePerFlyback(testEnvironment, parameters, tests);
+            Fct8322_SystemBasisChipHelpers.TestUndervoltageSBC(testEnvironment, parameters, GetTest);          
 
-            tests = new List<TestItem>
-            {
-                GetTest("FCT022021"),
-                GetTest("FCT022022"),
-                GetTest("FCT022023"),
-                GetTest("FCT022024"),
-                GetTest("FCT022025"),
-                GetTest("FCT022026"),
-                GetTest("FCT022027"),
-            };
+            Fct8322_SystemBasisChipHelpers.TestOvervoltageSBC(testEnvironment, parameters, GetTest);
 
-            Fct8322_SystemBasisChipHelpers.TestUndervoltageSBC(testEnvironment, parameters, tests);
-
-            tests = new List<TestItem>
-            {
-                GetTest("FCT022028"),
-                GetTest("FCT022029"),
-                GetTest("FCT022030"),
-                GetTest("FCT022031"),
-                GetTest("FCT022032"),
-                GetTest("FCT022033"),
-                GetTest("FCT022034"),
-            };
-
-            Fct8322_SystemBasisChipHelpers.TestOvervoltageSBC(testEnvironment, parameters, tests);
-
-            tests = new List<TestItem>
-            {
-                GetTest("FCT022035"),
-                GetTest("FCT022036"),
-                GetTest("FCT022037"),
-                GetTest("FCT022038"),              
-            };
-
-            Fct8322_SystemBasisChipHelpers.TestSBCSafepath(testEnvironment, parameters, tests);
+            Fct8322_SystemBasisChipHelpers.TestSBCSafepath(testEnvironment, parameters, GetTest);
 
         }
     }

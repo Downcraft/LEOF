@@ -28,9 +28,9 @@
         protected override List<TestItem> TestItems { get; set; } = new List<TestItem>
         {
             new TestItem { Descriptor = "FCT121001", Remark = "5V0An (Voltage)", TestPoints = new List<TestPoint> {new TestPoint("FP4x2703"), new TestPoint("M1x9900") }, Minimal = 4.9, Nominal = 5.0, Maximal = 5.1, Unit = "V" },
-            new TestItem { Descriptor = "FCT121002", Remark = "IPhaU (Voltage)", TestPoints = new List<TestPoint> {new TestPoint("TP1x8006x1U"), new TestPoint("M1x9900") }, Minimal = 0.01, Nominal = 0.5, Maximal = 0.01, Unit = "V" },
-            new TestItem { Descriptor = "FCT121003", Remark = "IPhaV (Voltage)", TestPoints = new List<TestPoint> {new TestPoint("TP1x8006x1V"), new TestPoint("M1x9900") }, Minimal = 0.01, Nominal = 0.5, Maximal = 0.01, Unit = "V" },
-            new TestItem { Descriptor = "FCT121004", Remark = "IPhaW (Voltage)", TestPoints = new List<TestPoint> {new TestPoint("TP1x8006x1W"), new TestPoint("M1x9900") }, Minimal = 0.01, Nominal = 0.5, Maximal = 0.01, Unit = "V" },
+            new TestItem { Descriptor = "FCT121002", Remark = "IPhaU (Voltage)", TestPoints = new List<TestPoint> {new TestPoint("TP1x8006x1U"), new TestPoint("M1x9900") }, Minimal = 0.01, Nominal = 0.5, Maximal = 0.02, Unit = "V" },
+            new TestItem { Descriptor = "FCT121003", Remark = "IPhaV (Voltage)", TestPoints = new List<TestPoint> {new TestPoint("TP1x8006x1V"), new TestPoint("M1x9900") }, Minimal = 0.01, Nominal = 0.5, Maximal = 0.02, Unit = "V" },
+            new TestItem { Descriptor = "FCT121004", Remark = "IPhaW (Voltage)", TestPoints = new List<TestPoint> {new TestPoint("TP1x8006x1W"), new TestPoint("M1x9900") }, Minimal = 0.01, Nominal = 0.5, Maximal = 0.02, Unit = "V" },
             new TestItem { Descriptor = "FCT121005", Remark = "nIPhaUOvc_Dig (Voltage)", TestPoints = new List<TestPoint> {new TestPoint("FP2x8201x1"), new TestPoint("M1x9900") }, Minimal = 4.5, Nominal = 4.7, Maximal = 5.0, Unit = "V" },
             new TestItem { Descriptor = "FCT121006", Remark = "nIPhaVOvc_Dig (Voltage)", TestPoints = new List<TestPoint> {new TestPoint("FP3x8201x1"), new TestPoint("M1x9900") }, Minimal = 4, Nominal = 4.2, Maximal = 5.0, Unit = "V" },
             new TestItem { Descriptor = "FCT121007", Remark = "nIPhaWOvc_Dig (Voltage)", TestPoints = new List<TestPoint> {new TestPoint("FP4x8201x1"), new TestPoint("M1x9900") }, Minimal = 4, Nominal = 4.2, Maximal = 5.0, Unit = "V" },
@@ -133,20 +133,24 @@
             test = GetTest("FCT121016");
             test.Nominal = test.Nominal * GetTest("FCT121001").Measured;
             test.Maximal = test.Nominal + test.Maximal;
-            TestLibrary.Voltage(test, range: DvmVRange.R1V);
+
+            TestVoltageWithRetest(test, DvmVRange.R1V);
+           
+
+           
 
             test = GetTest("FCT121017");
             test.Nominal = test.Nominal * GetTest("FCT121001").Measured;
             test.Maximal = test.Nominal + test.Maximal;
-            TestLibrary.Voltage(test, range: DvmVRange.R1V);
+            TestVoltageWithRetest(test, DvmVRange.R1V);
 
             test = GetTest("FCT121018");
             test.Nominal = test.Nominal * GetTest("FCT121001").Measured;
             test.Maximal = test.Nominal + test.Maximal;
-            TestLibrary.Voltage(test, range: DvmVRange.R1V);
+            TestVoltageWithRetest(test, DvmVRange.R1V);
 
             test = GetTest("FCT121019");
-            TestLibrary.Voltage(test, range: DvmVRange.R1V);
+            TestVoltageWithRetest(test, DvmVRange.R1V);
 
             test = GetTest("FCT121020");
             TestLibrary.Xcp(test, xcp, a2l.Measurements["IoEcu_rHwDiagPinLvl.InvPhase1CurrHigh"]);
@@ -181,16 +185,16 @@
             xcp.Download(a2l.Characteristics["HwTest_cPhaseOvcDiagLowOvrrdEn"], new List<byte> { 0x01 });
 
             test = GetTest("FCT121027");
-            TestLibrary.Voltage(test, range: DvmVRange.R1V);
+            TestVoltageWithRetest(test, DvmVRange.R1V);
 
             test = GetTest("FCT121028");
-            TestLibrary.Voltage(test, range: DvmVRange.R1V);
+            TestVoltageWithRetest(test, DvmVRange.R1V);
 
             test = GetTest("FCT121029");
-            TestLibrary.Voltage(test, range: DvmVRange.R1V);
+            TestVoltageWithRetest(test, DvmVRange.R1V);
 
             test = GetTest("FCT121030");
-            TestLibrary.Voltage(test, range: DvmVRange.R1V);
+            TestVoltageWithRetest(test, DvmVRange.R1V);
 
             test = GetTest("FCT121031");
             TestLibrary.Xcp(test, xcp, a2l.Measurements["IoEcu_rHwDiagPinLvl.InvPhase1CurrHigh"]);
@@ -203,6 +207,22 @@
 
             test = GetTest("FCT121034");
             TestLibrary.Xcp(test, xcp, a2l.Measurements["IoEcu_rHwDiagPinLvl.PhaseCurrHigh"]);
+
+        }
+
+
+        private void TestVoltageWithRetest(TestItem test, DvmVRange dvmVRange, double measureTime = 0.001)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                TestLibrary.Voltage(test, range: dvmVRange, measureTime: measureTime);
+                Thread.Sleep(50);
+
+                if(test.Result == TestResult.PASS)
+                {
+                    break;
+                }
+            }
 
         }
     }

@@ -24,15 +24,13 @@ namespace Program
         /// </summary>
         private TestList<TestParameters, UserFlagPurpose, PmxPurpose> _testList = new TestList<TestParameters, UserFlagPurpose, PmxPurpose>
         {
-            (site, siteManager) => new Fct83121_AcCurrentMeasurement(site, siteManager), //funktioniert aber instabil 
 
             (site, siteManager) => new Fct8311_SupplyVoltagesAndCurrents(site, siteManager), //funktioniert
-            (site, siteManager) => new Fct8322_SystemBasisChip(site, siteManager), //funktioniert, aber instabil nSCCP3V3 ist manchmal 0V
-
             (site, siteManager) => new Fct8312_15VMonitoring(site, siteManager), //funktioniert
             (site, siteManager) => new Fct8313_Terminal30_Monitoring(site, siteManager), //Bridge Spannung fehlt (muss über Software getriggert werden?)
             (site, siteManager) => new Fct8314_HvFlybackConverter(site, siteManager), //funktioniert
             (site, siteManager) => new Fct8321_5VMonitoring(site, siteManager), //funktioniert
+            (site, siteManager) => new Fct8322_SystemBasisChip(site, siteManager), //funktioniert, aber instabil nSCCP3V3 ist manchmal 0V
             (site, siteManager) => new Fct8331_SafeStateLogic(site, siteManager), //funktioniert
             (site, siteManager) => new Fct8341_AksSsoSwitching(site, siteManager),//XCP Variable IoEcu_rAsoAsc.AsoAscPinLvl bleibt auf 0 obwohl HW Wert sich ändert
             (site, siteManager) => new Fct8342_HvDcMeasurementAndOvDetection(site, siteManager),//funktioniert
@@ -44,6 +42,7 @@ namespace Program
             (site, siteManager) => new Fct83101_WheelSpeed(site, siteManager), //Spannungen alle etwas anders als bei C1: SPD_SIG = 13.8 statt 13.5V , HwTest_VADC_Result_G3_Ch5 = 1.9V statt 1.8V
             (site, siteManager) => new Fct83111_ResolverExcitationOutput(site, siteManager),//RMS Werte etwas höher als bei C1: 7.7V statt 7.4
             (site, siteManager) => new Fct83112_ResolverInterface(site, siteManager), //funkioniert
+            (site, siteManager) => new Fct83121_AcCurrentMeasurement(site, siteManager), //funktioniert aber instabil 
             (site, siteManager) => new Fct83131_EmTemperatureMeasurements(site, siteManager),//funktioniert garnicht mehr. Die Range umschaltung hatte bei C1 mit HWTEST FW funktioniert.
             (site, siteManager) => new Fct83141_GateDriverMagneto(site, siteManager), //funktioniert
             (site, siteManager) => new Fct83142_InternalSuppliesHvSide(site, siteManager), //funktioniert nicht Baustein reagiert nicht auf Änderungen an LV Seite PWM Signal an MCU zu sehen aber nicht bei den Gates.
