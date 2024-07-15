@@ -14,7 +14,7 @@
 
     internal class Fct8381_CanTransceiver : BaseTest<TestParameters, UserFlagPurpose, PmxPurpose>
     {
-        public Fct8381_CanTransceiver(int site, SiteManager siteManager) : base(site, siteManager)
+        public Fct8381_CanTransceiver(int site, SiteManager siteManager, Variant variant) : base(site, siteManager, variant)
         {
         }
         public override bool IsEnabled { get; set; } = true;

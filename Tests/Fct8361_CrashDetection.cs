@@ -13,7 +13,7 @@
 
     internal class Fct8361_CrashDetection : BaseTest<TestParameters, UserFlagPurpose, PmxPurpose>
     {
-        public Fct8361_CrashDetection(int site, SiteManager siteManager) : base(site, siteManager)
+        public Fct8361_CrashDetection(int site, SiteManager siteManager, Variant variant) : base(site, siteManager, variant)
         {
         }
         public override bool IsEnabled { get; set; } = true;

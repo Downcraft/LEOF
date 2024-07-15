@@ -14,7 +14,7 @@
 
     internal class Fct8341_AksSsoSwitching : BaseTest<TestParameters, UserFlagPurpose, PmxPurpose>
     {
-        public Fct8341_AksSsoSwitching(int site, SiteManager siteManager) : base(site, siteManager)
+        public Fct8341_AksSsoSwitching(int site, SiteManager siteManager, Variant variant) : base(site, siteManager, variant)
         {
         }
 
@@ -28,13 +28,13 @@
         protected override List<TestItem> TestItems { get; set; } = new List<TestItem>
         {
             new TestItem { Descriptor = "FCT041001", Remark = "AsoAsc (Voltage)", TestPoints = new List<TestPoint> { new TestPoint("FP12x3604"), new TestPoint("M1x9900") }, Minimal = -0.1, Nominal = 0, Maximal = 0.1, Unit = "V" },
-            new TestItem { Descriptor = "FCT041002", Remark = "IoEcu_rAsoAsc.AsoAscPinLvl (XCP)", Minimal = 0, Nominal = 0, Maximal = 0, Unit = "Boolean" },
+            new TestItem { Descriptor = "FCT041002", Remark = "IoEcu_rAsoAsc.AsoAscPinLvl (XCP)", Minimal = 0, Nominal = 0, Maximal = 0, Unit = "Boolean", IsNoError  = true },
             new TestItem { Descriptor = "FCT041003", Remark = "PwrHv (Voltage)", TestPoints = new List<TestPoint> { new TestPoint("TP10X6304X1"), new TestPoint("M2") }, Minimal = 45, Nominal = 48, Maximal = 49.3, Unit = "V" },
             new TestItem { Descriptor = "FCT041004", Remark = "AsoAsc (Voltage)", TestPoints = new List<TestPoint> { new TestPoint("FP12x3604"), new TestPoint("M1x9900") }, Minimal = 4.4, Nominal = 4.5, Maximal = 4.7, Unit = "V" },
-            new TestItem { Descriptor = "FCT041005", Remark = "IoEcu_rAsoAsc.AsoAscPinLvl (XCP)", Minimal = 1, Nominal = 1, Maximal = 1, Unit = "Boolean" },
+            new TestItem { Descriptor = "FCT041005", Remark = "IoEcu_rAsoAsc.AsoAscPinLvl (XCP)", Minimal = 1, Nominal = 1, Maximal = 1, Unit = "Boolean" , IsNoError  = true},
             new TestItem { Descriptor = "FCT041006", Remark = "PwrHv (Voltage)", TestPoints = new List<TestPoint> { new TestPoint("TP10X6304X1"), new TestPoint("M2") }, Minimal = 49.3, Nominal = 50, Maximal = 53, Unit = "V" },
             new TestItem { Descriptor = "FCT041007", Remark = "AsoAsc (Voltage)", TestPoints = new List<TestPoint> { new TestPoint("FP12x3604"), new TestPoint("M1x9900") }, Minimal = -0.01, Nominal = 0, Maximal = 0.1, Unit = "V" },
-            new TestItem { Descriptor = "FCT041008", Remark = "IoEcu_rAsoAsc.AsoAscPinLvl (XCP)", Minimal = 0, Nominal = 0, Maximal = 0, Unit = "Boolean" },
+            new TestItem { Descriptor = "FCT041008", Remark = "IoEcu_rAsoAsc.AsoAscPinLvl (XCP)", Minimal = 0, Nominal = 0, Maximal = 0, Unit = "Boolean", IsNoError  = true },
 
         };
 
@@ -92,7 +92,7 @@
            
 
             SetTests(LevelTest: GetTest("FCT041004"), triggerTest: GetTest("FCT041003"));
-            RampDown(startVoltage: (55.0/factor), endVoltage: (45/factor));
+            RampDown(startVoltage: (55.0/factor), endVoltage: (45.0/factor));
 
             Thread.Sleep(100);
 

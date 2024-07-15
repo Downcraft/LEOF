@@ -14,7 +14,7 @@
 
     internal class Fct83143_Desaturation : BaseTest<TestParameters, UserFlagPurpose, PmxPurpose>
     {
-        public Fct83143_Desaturation(int site, SiteManager siteManager) : base(site, siteManager)
+        public Fct83143_Desaturation(int site, SiteManager siteManager, Variant variant) : base(site, siteManager, variant)
         {
         }
 

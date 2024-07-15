@@ -500,11 +500,18 @@ namespace Program
         }
 
 
+        public static void doMeasurements (Xcp xcp,  string measure, A2lParser parser)
+        {
+            var measurements = parser.Measurements.Keys.ToList().Where(k=>k.StartsWith(measure)).ToList();
 
+            foreach (var measurement in measurements)
+            {
+                var value = parser.Measurements[measurement];
+                var val = xcp.GetConvertedValue(value).Value;
 
-
-
-
+                LogController.Print($"Measurement: {measurement} = {val}");
+            }
+        }
 
     }
 }

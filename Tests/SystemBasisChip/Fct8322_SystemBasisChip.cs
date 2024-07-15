@@ -6,6 +6,8 @@
     using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
+    using PeakCanXcp;
+    using Prorgam;
     using Spea;
     using Spea.Instruments;
     using Spea.TestEnvironment;
@@ -13,7 +15,7 @@
 
     internal class Fct8322_SystemBasisChip : BaseTest<TestParameters, UserFlagPurpose, PmxPurpose>
     {
-        public Fct8322_SystemBasisChip(int site, SiteManager siteManager) : base(site, siteManager)
+        public Fct8322_SystemBasisChip(int site, SiteManager siteManager, Variant variant) : base(site, siteManager, variant)
         {
         }
 
@@ -58,15 +60,73 @@
             new TestItem { Descriptor = "FCT022036", Remark = "nSbcSSp3 (Voltage)", TestPoints = new List<TestPoint> { new TestPoint("FP13x2703"), new TestPoint("M1x9900") }, Minimal = 0, Nominal = 0, Maximal = 2, Unit = "V" },
             new TestItem { Descriptor = "FCT022037", Remark = "nSbcMcuRst_Dig (Voltage)", TestPoints = new List<TestPoint> { new TestPoint("FP8x2703"), new TestPoint("M1x9900") }, Minimal = 0, Nominal = 0, Maximal = 1.5, Unit = "V" },
             new TestItem { Descriptor = "FCT022038", Remark = "nSbcSSp3 (Voltage)", TestPoints = new List<TestPoint> { new TestPoint("FP13x2703"), new TestPoint("M1x9900") }, Minimal = 0, Nominal = 0, Maximal = 0.5, Unit = "V" },
+                        
+        
+        
         };
 
         protected override void RunTest(TestEnv<UserFlagPurpose, PmxPurpose> testEnvironment, TestParameters parameters)
         {
 
+            var xcp = parameters.Xcp;
+            var a2l = TestParameters.A2l;
+
             testEnvironment.Reset();
-            Thread.Sleep(1000);           
-            
-            Fct8322_SystemBasisChipHelpers.TestWakeOnCan(testEnvironment, parameters, GetTest);
+            Thread.Sleep(300);
+            LeoF.RunAnlTaskLabel("", "DSC_S", "DSC_E");
+
+            testEnvironment.Set(state => state
+            .HasFpsOn(FpsId.FPS4)
+                .HasActiveUserFlags(UserFlagPurpose.CAN, UserFlagPurpose.CAN_Termination, UserFlagPurpose.Power_Mod_U, UserFlagPurpose.Power_Mod_V, UserFlagPurpose.Power_Mod_W)
+            .HasStimuliOn(new StimulusConfig(StimulusId.BSTI1, 13.5, 2, useSense: true))
+            );           
+
+            Thread.Sleep(3000);
+
+
+            for (int i = 0; i < 1; i++)
+            {
+                var success = Fct8322_SystemBasisChipHelpers.TestWakeOnCan(testEnvironment, parameters, GetTest);
+
+                if (success)
+                {
+                    break;
+                }
+
+                //TestLibrary.doMeasurements(xcp, "V_MCU_Data", a2l);
+
+                //TestLibrary.doMeasurements(xcp, "V_SMU_AlarmGroup", a2l);
+
+
+                //Restbus.Diag1 = true;
+
+                //while(Restbus.Diag1)
+                //{
+                //    Thread.Sleep(100);
+                //}
+
+                //Restbus.Diag2 = true;
+
+                //while (Restbus.Diag2)
+                //{
+                //    Thread.Sleep(100);
+                //}
+
+
+
+                testEnvironment.Reset();
+                Thread.Sleep(3000);
+
+                testEnvironment.Set(state => state
+                .HasFpsOn(FpsId.FPS4)
+                    .HasActiveUserFlags(UserFlagPurpose.CAN, UserFlagPurpose.CAN_Termination, UserFlagPurpose.Power_Mod_U, UserFlagPurpose.Power_Mod_V, UserFlagPurpose.Power_Mod_W)
+                .HasStimuliOn(new StimulusConfig(StimulusId.BSTI1, 13.5, 2, useSense: true))
+                );
+
+                Thread.Sleep(300);
+
+                //Restbus.DoReset = true;
+            }
 
             Fct8322_SystemBasisChipHelpers.TestWakePerFlyback(testEnvironment, parameters, GetTest);           
 

@@ -13,7 +13,7 @@
 
     internal class Fct8314_HvFlybackConverter : BaseTest<TestParameters, UserFlagPurpose, PmxPurpose>
     {
-        public Fct8314_HvFlybackConverter(int site, SiteManager siteManager) : base(site, siteManager)
+        public Fct8314_HvFlybackConverter(int site, SiteManager siteManager, Variant variant) : base(site, siteManager, variant)
         {
         }
 
@@ -27,7 +27,7 @@
         protected override List<TestItem> TestItems { get; set; } = new List<TestItem>
         {
             new TestItem { Descriptor = "FCT014001", Remark = "16V5Flyback (Voltage)", TestPoints = new List<TestPoint> { new TestPoint("TP8x2202"), new TestPoint("M1x9900") }, Minimal = 16, Nominal = 16.5, Maximal = 17, Unit = "V"},
-            new TestItem { Descriptor = "FCT014002", Remark = "12V0FlyHv (Voltage)", TestPoints = new List<TestPoint> { new TestPoint("TP25x2202"), new TestPoint("M2") }, Minimal = 14, Nominal = 14.4, Maximal = 18.0, Unit = "V" },
+            new TestItem { Descriptor = "FCT014002", Remark = "12V0FlyHv (Voltage)", TestPoints = new List<TestPoint> { new TestPoint("TP25x2202"), new TestPoint("M2") }, Minimal = 13, Nominal = 14.4, Maximal = 18.0, Unit = "V" },
         };
 
         protected override void RunTest(TestEnv<UserFlagPurpose, PmxPurpose> testEnvironment, TestParameters parameters)

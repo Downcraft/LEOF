@@ -13,7 +13,7 @@
 
     internal class Fct8371_ActiveDischarge : BaseTest<TestParameters, UserFlagPurpose, PmxPurpose>
     {
-        public Fct8371_ActiveDischarge(int site, SiteManager siteManager) : base(site, siteManager)
+        public Fct8371_ActiveDischarge(int site, SiteManager siteManager, Variant variant) : base(site, siteManager, variant)
         {
         }
         public override bool IsEnabled { get; set; } = true;

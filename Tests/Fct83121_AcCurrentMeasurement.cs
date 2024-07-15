@@ -13,7 +13,7 @@
 
     internal class Fct83121_AcCurrentMeasurement : BaseTest<TestParameters, UserFlagPurpose, PmxPurpose>
     {
-        public Fct83121_AcCurrentMeasurement(int site, SiteManager siteManager) : base(site, siteManager)
+        public Fct83121_AcCurrentMeasurement(int site, SiteManager siteManager, Variant variant) : base(site, siteManager, variant)
         {
         }
         public override bool IsEnabled { get; set; } = true;
@@ -43,18 +43,18 @@
             new TestItem { Descriptor = "FCT121017", Remark = "nIPhaVOvc_Dig (Voltage)", TestPoints = new List<TestPoint> {new TestPoint("FP3x8201x1"), new TestPoint("M1x9900") }, Minimal = 0.0, Nominal = 0.025, Maximal = 0.0, Unit = "V" },
             new TestItem { Descriptor = "FCT121018", Remark = "nIPhaWOvc_Dig (Voltage)", TestPoints = new List<TestPoint> {new TestPoint("FP4x8201x1"), new TestPoint("M1x9900") }, Minimal = 0.0, Nominal = 0.025, Maximal = 0.0, Unit = "V" },
             new TestItem { Descriptor = "FCT121019", Remark = "nIOvc_Dig (Voltage)", TestPoints = new List<TestPoint> {new TestPoint("FP7x8201x1"), new TestPoint("M1x9900") }, Minimal = 0.0, Nominal = 0.05, Maximal = 0.9, Unit = "V" },
-            new TestItem { Descriptor = "FCT121020", Remark = "IoEcu_rHwDiagPinLvl.InvPhase1CurrHigh (Voltage)", Minimal = 0, Nominal = 0, Maximal = 0, Unit = "Level" },
-            new TestItem { Descriptor = "FCT121021", Remark = "IoEcu_rHwDiagPinLvl.InvPhase2CurrHigh (Voltage)", Minimal = 0, Nominal = 0, Maximal = 0, Unit = "Level" },
-            new TestItem { Descriptor = "FCT121022", Remark = "IoEcu_rHwDiagPinLvl.InvPhase3CurrHigh (Voltage)", Minimal = 0, Nominal = 0, Maximal = 0, Unit = "Level" },
-            new TestItem { Descriptor = "FCT121023", Remark = "IoEcu_rHwDiagPinLvl.PhaseCurrHigh (Voltage)", Minimal = 0, Nominal = 0, Maximal = 0, Unit = "Level" },
+            new TestItem { Descriptor = "FCT121020", Remark = "IoEcu_rHwDiagPinLvl.InvPhase1CurrHigh (Xcp)", Minimal = 0, Nominal = 0, Maximal = 0, Unit = "Level" },
+            new TestItem { Descriptor = "FCT121021", Remark = "IoEcu_rHwDiagPinLvl.InvPhase2CurrHigh (Xcp)", Minimal = 0, Nominal = 0, Maximal = 0, Unit = "Level" },
+            new TestItem { Descriptor = "FCT121022", Remark = "IoEcu_rHwDiagPinLvl.InvPhase3CurrHigh (Xcp)", Minimal = 0, Nominal = 0, Maximal = 0, Unit = "Level" },
+            new TestItem { Descriptor = "FCT121023", Remark = "IoEcu_rHwDiagPinLvl.PhaseCurrHigh (Xcp)", Minimal = 0, Nominal = 0, Maximal = 0, Unit = "Level" },
             new TestItem { Descriptor = "FCT121027", Remark = "nIPhaUOvc_Dig (Voltage)", TestPoints = new List<TestPoint> {new TestPoint("FP2x8201x1"), new TestPoint("M1x9900") }, Minimal = 0.0, Nominal = 0.0, Maximal = 0.115, Unit = "V" },
             new TestItem { Descriptor = "FCT121028", Remark = "nIPhaVOvc_Dig (Voltage)", TestPoints = new List<TestPoint> {new TestPoint("FP3x8201x1"), new TestPoint("M1x9900") }, Minimal = 0.0, Nominal = 0.0, Maximal = 0.115, Unit = "V" },
             new TestItem { Descriptor = "FCT121029", Remark = "nIPhaWOvc_Dig (Voltage)", TestPoints = new List<TestPoint> {new TestPoint("FP4x8201x1"), new TestPoint("M1x9900") }, Minimal = 0.0, Nominal = 0.0, Maximal = 0.115, Unit = "V" },
             new TestItem { Descriptor = "FCT121030", Remark = "nIOvc_Dig (Voltage)", TestPoints = new List<TestPoint> {new TestPoint("FP7x8201x1"), new TestPoint("M1x9900") }, Minimal = 0.0, Nominal = 0.0, Maximal = 0.738, Unit = "V" },
-            new TestItem { Descriptor = "FCT121031", Remark = "IoEcu_rHwDiagPinLvl.InvPhase1CurrHigh (Voltage)", Minimal = 0, Nominal = 0, Maximal = 0, Unit = "Level" },
-            new TestItem { Descriptor = "FCT121032", Remark = "IoEcu_rHwDiagPinLvl.InvPhase2CurrHigh (Voltage)", Minimal = 0, Nominal = 0, Maximal = 0, Unit = "Level" },
-            new TestItem { Descriptor = "FCT121033", Remark = "IoEcu_rHwDiagPinLvl.InvPhase3CurrHigh (Voltage)", Minimal = 0, Nominal = 0, Maximal = 0, Unit = "Level" },
-            new TestItem { Descriptor = "FCT121034", Remark = "IoEcu_rHwDiagPinLvl.PhaseCurrHigh (Voltage)", Minimal = 0, Nominal = 0, Maximal = 0, Unit = "Level" },
+            new TestItem { Descriptor = "FCT121031", Remark = "IoEcu_rHwDiagPinLvl.InvPhase1CurrHigh (Xcp)", Minimal = 0, Nominal = 0, Maximal = 0, Unit = "Level" },
+            new TestItem { Descriptor = "FCT121032", Remark = "IoEcu_rHwDiagPinLvl.InvPhase2CurrHigh (Xcp)", Minimal = 0, Nominal = 0, Maximal = 0, Unit = "Level" },
+            new TestItem { Descriptor = "FCT121033", Remark = "IoEcu_rHwDiagPinLvl.InvPhase3CurrHigh (Xcp)", Minimal = 0, Nominal = 0, Maximal = 0, Unit = "Level" },
+            new TestItem { Descriptor = "FCT121034", Remark = "IoEcu_rHwDiagPinLvl.PhaseCurrHigh (Xcp)", Minimal = 0, Nominal = 0, Maximal = 0, Unit = "Level" },
         };
 
         protected override void RunTest(TestEnv<UserFlagPurpose, PmxPurpose> testEnvironment, TestParameters parameters)
@@ -183,6 +183,8 @@
             xcp.Download(a2l.Characteristics["HwTest_cPhaseOvcDiagHighOvrrdEn"], new List<byte> { 0x00 });
             xcp.Download(a2l.Characteristics["HwTest_cPhaseOvcDiagLowOvrrd"], new List<byte> { 0x01 });
             xcp.Download(a2l.Characteristics["HwTest_cPhaseOvcDiagLowOvrrdEn"], new List<byte> { 0x01 });
+
+            Thread.Sleep(500);  
 
             test = GetTest("FCT121027");
             TestVoltageWithRetest(test, DvmVRange.R1V);

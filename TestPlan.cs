@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -44,6 +45,13 @@ namespace Program
         /// </summary>
         private static PmxChannelMap<PmxPurpose> _pmxChannelMap;
 
+
+        /// <summary>
+        /// The current active variant of the TPGM.
+        /// </summary>
+        private static Variant _variant;
+
+
         public static TestLists testLists = new TestLists();   
 
         /// <summary>
@@ -67,6 +75,7 @@ namespace Program
         {
             _userFlagMap = new UserFlagMaps().getUserFlagMap();
             _pmxChannelMap = new PMXChannelMaps().getPmxChannelMap();
+            _variant = new Variant();
         }
 
 
@@ -77,7 +86,7 @@ namespace Program
         /// </summary>
         public static void TestPlanStart()
         {
-
+            LeoF.RunAnlTaskLabel("", "DSC_S", "DSC_E");
         
 
             //LogController.ConfigureLogging(LoggingOption.Both, "C:\\Data\\", "eAts_TestSoftware.log");
@@ -106,13 +115,23 @@ namespace Program
 
 
                 // This method contains the main loop, which will go through all sites, executing all the tests entered in the _testList.
-                status = Run(testEnvironment, siteManager, testParameters);
+                status = Run(testEnvironment, siteManager, _variant, testParameters);
             }
             catch (Exception ex)
             {
                 // Log exception to Runpack and CdColl.
                 status = LogException(ex, siteManager.Sites.ToList());
             }
+
+            if(TestParameters.Debug)
+            {
+
+                var Log = LogController.GetLogHistory();
+
+
+                File.WriteAllLines(TestParameters.DebugLoggingPath, Log);
+            }
+
 
             // Set test plan result.
             LeoF.TplanResultSet(status);
@@ -125,7 +144,7 @@ namespace Program
         /// <param name="siteManager">The site manager object.</param>
         /// <param name="testParameters">Custom parameters which will be passed to each test.</param>
         /// <returns></returns>
-        private static TestplanResults Run(TestEnv<UserFlagPurpose, PmxPurpose> testEnvironment, SiteManager siteManager, TestParameters testParameters, bool logWholeTestTime = true)
+        private static TestplanResults Run(TestEnv<UserFlagPurpose, PmxPurpose> testEnvironment, SiteManager siteManager, Variant variant, TestParameters testParameters, bool logWholeTestTime = true)
         {
             var status = TestplanResults.PASS;
             var sitesUnderTest = siteManager.SitesToTest.ToList();
@@ -137,11 +156,11 @@ namespace Program
             // After all tests are completed, the test envrionment is reseted, ensuring a power down.
             try
             {
-                MultiSiteTestLoop(testEnvironment, siteManager, testParameters, out status, out sitesUnderTest, out var stop);
+                MultiSiteTestLoop(testEnvironment, siteManager, testParameters, variant, out status, out sitesUnderTest, out var stop);
 
                 if (!stop && siteManager.SitesToTest.Any())
                 {
-                    SingleSiteTestLoop(testEnvironment, siteManager, testParameters, out status, out sitesUnderTest);
+                    SingleSiteTestLoop(testEnvironment, siteManager, testParameters, variant, out status, out sitesUnderTest);
                 }
                 if (logWholeTestTime && toBeTestedSites.Any())
                 {
@@ -193,7 +212,7 @@ namespace Program
             return status;
         }
 
-        private static void SingleSiteTestLoop(TestEnv<UserFlagPurpose, PmxPurpose> testEnvironment, SiteManager siteManager, TestParameters testParameters, out TestplanResults status, out List<int> sitesUnderTest)
+        private static void SingleSiteTestLoop(TestEnv<UserFlagPurpose, PmxPurpose> testEnvironment, SiteManager siteManager, TestParameters testParameters, Variant variant, out TestplanResults status, out List<int> sitesUnderTest)
         {
             status = TestplanResults.PASS;
             sitesUnderTest = siteManager.SitesToTest.ToList();
@@ -221,7 +240,7 @@ namespace Program
                 TestItem.ResetId(sequentialTestId);
 
                 // Tests are generated new for each site. This ensure that test configuration changed during test is restored.
-                var tests = _testList.Select(factory => factory(site, siteManager)).ToList();
+                var tests = _testList.Select(factory => factory(site, siteManager, variant)).ToList();
 
                 // Each site is set to PASS, at test start.
                 siteManager.SetTestResult(site, SiteResults.RESULT_PASS);
@@ -263,7 +282,7 @@ namespace Program
             }
         }
 
-        private static void MultiSiteTestLoop(TestEnv<UserFlagPurpose, PmxPurpose> testEnvironment, SiteManager siteManager, TestParameters testParameters, out TestplanResults status, out List<int> sitesUnderTest, out bool stop)
+        private static void MultiSiteTestLoop(TestEnv<UserFlagPurpose, PmxPurpose> testEnvironment, SiteManager siteManager, TestParameters testParameters, Variant variant, out TestplanResults status, out List<int> sitesUnderTest, out bool stop)
         {
             status = TestplanResults.PASS;
             sitesUnderTest = siteManager.SitesToTest.ToList();
@@ -272,7 +291,7 @@ namespace Program
             // Loop through all multi site tests.
             foreach (var testFactory in _multiSiteTestList)
             {
-                var test = testFactory.Create(siteManager);
+                var test = testFactory.Create(siteManager, variant);
 
                 // Exclude any tests which don't have sites assigned to it.
                 if (testFactory.Sites.Count == 0)

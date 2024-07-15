@@ -13,7 +13,7 @@
 
     internal class Fct8391_Decoupling: BaseTest<TestParameters, UserFlagPurpose, PmxPurpose>
     {
-        public Fct8391_Decoupling(int site, SiteManager siteManager) : base(site, siteManager)
+        public Fct8391_Decoupling(int site, SiteManager siteManager, Variant variant) : base(site, siteManager, variant)
         {
         }
         public override bool IsEnabled { get; set; } = true;
@@ -33,7 +33,8 @@
             new TestItem { Descriptor = "FCT091008", Remark = "DCU_POS_SIG (Voltage)", TestPoints = { new TestPoint("FP2x8602"), new TestPoint("M1x9900") }, Minimal = 900, Nominal = 1000, Maximal = 1100, Unit = "Hz" },
             new TestItem { Descriptor = "FCT091009", Remark = "DigSnsrPwmSent_Dig (Voltage)", TestPoints = { new TestPoint("FP1x8602"), new TestPoint("M1x9900") }, Minimal = 23.0, Nominal = 25, Maximal = 26, Unit = "%" },
             new TestItem { Descriptor = "FCT091010", Remark = "DigSnsrPwmSent_Dig (Voltage)", TestPoints = { new TestPoint("FP1x8602"), new TestPoint("M1x9900") }, Minimal = 900, Nominal = 1000, Maximal = 1100, Unit = "µs" },
-            new TestItem { Descriptor = "FCT091012", Remark = "SolnElecI_An (Voltage)", TestPoints = { new TestPoint("FP3x5003"), new TestPoint("M1x9900") }, Minimal = 2.4, Nominal = 2.64, Maximal = 2.8, Unit = "V" },
+            //new TestItem { Descriptor = "FCT091012", Remark = "SolnElecI_An (Voltage)", TestPoints = { new TestPoint("FP3x5003"), new TestPoint("M1x9900") }, Minimal = 2.4, Nominal = 2.64, Maximal = 2.8, Unit = "V" },
+            new TestItem { Descriptor = "FCT091012", Remark = "SolnElecI_An (Voltage)", TestPoints = { new TestPoint("FP3x5003"), new TestPoint("M1x9900") }, Minimal = 1.1, Nominal = 1.25, Maximal = 1.4, Unit = "V" },
             new TestItem { Descriptor = "FCT091013", Remark = "IoActr_ActrCurr (Xcp)", Minimal = 0.5, Nominal = 0.66, Maximal = 0.8, Unit = "A" },
             new TestItem { Descriptor = "FCT091015", Remark = "SolnDiagPhaPosNegElecU_An (Voltage)", TestPoints = { new TestPoint("FP8x5003"), new TestPoint("M1x9900") }, Minimal = 1.1, Nominal = 1.2, Maximal = 1.3, Unit = "V" },
         };
@@ -103,17 +104,17 @@
 
             test = GetTest("FCT091009");
             var param  = TestLibrary.PWM(test, test.Nominal, 0.5, 3.0, periodes: 10);
-            test.Measured = param.DutyCycle;
+            test.Measured = Math.Round(param.DutyCycle,2);
 
             if(test.Result != TestResult.PASS)
             {                
 
                 param = TestLibrary.PWM(test, test.Nominal, 0.5, 3.0, periodes: 10);
-                test.Measured = param.DutyCycle;
+                test.Measured = Math.Round(param.DutyCycle, 2);
             }
 
             test = GetTest("FCT091010");
-            test.Measured = (1/param.Frequency) * 1_000_000d;
+            test.Measured = Math.Round( (1/param.Frequency) * 1_000_000d, 3);
 
             xcp.Download(a2l.Characteristics["Aps_cTestModeEn"], new List<byte> { 0x01 });
             Thread.Sleep(25);

@@ -13,7 +13,7 @@
 
     internal class Fct8313_Terminal30_Monitoring : BaseTest<TestParameters, UserFlagPurpose, PmxPurpose>
     {
-        public Fct8313_Terminal30_Monitoring(int site, SiteManager siteManager) : base(site, siteManager)
+        public Fct8313_Terminal30_Monitoring(int site, SiteManager siteManager, Variant variant) : base(site, siteManager, variant)
         {
         }
 

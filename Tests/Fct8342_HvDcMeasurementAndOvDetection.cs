@@ -13,7 +13,7 @@
 
     internal class Fct8342_HvDcMeasurementAndOvDetection : BaseTest<TestParameters, UserFlagPurpose, PmxPurpose>
     {
-        public Fct8342_HvDcMeasurementAndOvDetection(int site, SiteManager siteManager) : base(site, siteManager)
+        public Fct8342_HvDcMeasurementAndOvDetection(int site, SiteManager siteManager, Variant variant) : base(site, siteManager, variant)
         {
         }
 
@@ -32,7 +32,7 @@
             new TestItem { Descriptor = "FCT042004", Remark = "Udc_N (Voltage)", TestPoints = new List<TestPoint> { new TestPoint("TP14x6304x1"), new TestPoint("TP6X6304X2") }, Minimal = 0.7, Nominal = 0.74, Maximal = 0.78, Unit = "V" },
             new TestItem { Descriptor = "FCT042005", Remark = "UdcMeas (Voltage)", TestPoints = new List<TestPoint> { new TestPoint("TP10x6304x1"), new TestPoint("TP6X6304X2") }, Minimal = 2.44, Nominal = 2.45, Maximal = 2.482, Unit = "V" },
             new TestItem { Descriptor = "FCT042006", Remark = "nOvvDetd_Dig (Voltage)", TestPoints = new List<TestPoint> { new TestPoint("FP6x3604"), new TestPoint("M1X9900") }, Minimal = 4.1, Nominal = 4.2, Maximal = 4.3, Unit = "V" },
-            new TestItem { Descriptor = "FCT042007", Remark = "UdcMeas (Voltage)", TestPoints = new List<TestPoint> { new TestPoint("TP10x6304x1"), new TestPoint("TP6X6304X2") }, Minimal = 2.48, Nominal = 2.5, Maximal = 2.55, Unit = "V" },
+            new TestItem { Descriptor = "FCT042007", Remark = "UdcMeas (Voltage)", TestPoints = new List<TestPoint> { new TestPoint("TP10x6304x1"), new TestPoint("TP6X6304X2") }, Minimal = 2.475, Nominal = 2.5, Maximal = 2.55, Unit = "V" },
             new TestItem { Descriptor = "FCT042008", Remark = "nOvvDetd_Dig (Voltage)", TestPoints = new List<TestPoint> { new TestPoint("FP6x3604"), new TestPoint("M1X9900") }, Minimal = 0, Nominal = 0, Maximal = 0.25, Unit = "V" },
         };
 

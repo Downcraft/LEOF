@@ -1,4 +1,5 @@
-﻿using Spea;
+﻿using PeakCanXcp;
+using Spea;
 using Spea.Instruments;
 using Spea.TestEnvironment;
 using Spea.TestFramework;
@@ -25,21 +26,15 @@ namespace Program
 
             return range;
         }
-        public static void TestWakeOnCan(TestEnv<UserFlagPurpose, PmxPurpose> testEnvironment, TestParameters parameters, Func<string, TestItem> GetTest)
+        public static bool TestWakeOnCan(TestEnv<UserFlagPurpose, PmxPurpose> testEnvironment, TestParameters parameters, Func<string, TestItem> GetTest)
         {
             var xcp = parameters.Xcp;
             var a2l = TestParameters.A2l;
 
-            testEnvironment.Set(state => state
-            .HasFpsOn(FpsId.FPS4)
-                .HasActiveUserFlags(UserFlagPurpose.CAN, UserFlagPurpose.CAN_Termination, UserFlagPurpose.Power_Mod_U, UserFlagPurpose.Power_Mod_V, UserFlagPurpose.Power_Mod_W)
-            .HasStimuliOn(new StimulusConfig(StimulusId.BSTI1, 13.5, 2, useSense: true))
-            );
-
-
-            //TestParameters.Xcp.Connect();
+            xcp.Connect();
 
             Thread.Sleep(300);
+
             DvmVRange range;
 
              var test = GetTest("FCT022002");
@@ -60,8 +55,12 @@ namespace Program
 
             test = GetTest("FCT022006");
             range = GetVoltageRangeRegardingTestLimits(test);
-            TestVoltageWithRetest(test, range, measureTime: 0.001);
+            TestVoltageWithRetest(test, range, measureTime: 0.1, retest: 10);
 
+            if(test.Result != TestResult.PASS)
+            {
+                return false;
+            }
 
 
             xcp.Download(a2l.Characteristics["IoEcu_cSbcMux.CmdMuxValueOvrrdEn"], new List<byte> { 0x01 });
@@ -69,7 +68,7 @@ namespace Program
 
             test = GetTest("FCT022008");
             range = GetVoltageRangeRegardingTestLimits(test);
-            TestLibrary.Voltage(test, range: range, measureTime: 0.05);
+            TestLibrary.Voltage(test, range: range, measureTime: 0.1);
 
 
             xcp.Download(a2l.Characteristics["IoEcu_cSbcMux.CmdMuxValueOvrrdEn"], new List<byte> { 0x01 });
@@ -77,7 +76,7 @@ namespace Program
 
             test = GetTest("FCT022010");
             range = GetVoltageRangeRegardingTestLimits(test);
-            TestLibrary.Voltage(test, range: range);
+            TestLibrary.Voltage(test, range: range, measureTime: 0.1);
 
 
             //try
@@ -88,6 +87,8 @@ namespace Program
             //{
 
             //}
+
+            return true;
         }
 
         public static void TestWakePerFlyback(TestEnv<UserFlagPurpose, PmxPurpose> testEnvironment, TestParameters parameters, Func<string, TestItem> GetTest)
@@ -96,7 +97,7 @@ namespace Program
             var a2l = TestParameters.A2l;
             testEnvironment.Reset();
 
-            Thread.Sleep(1000);
+            Thread.Sleep(3000);
 
 
             testEnvironment.Set(state => state
@@ -155,7 +156,7 @@ namespace Program
             TestLibrary.Voltage(test, range: range, measureTime: 0.05);
 
 
-            testEnvironment.Reset();
+            //testEnvironment.Reset();
 
         }
 
@@ -201,7 +202,7 @@ namespace Program
 
             test = GetTest("FCT022027");
             range = GetVoltageRangeRegardingTestLimits(test);
-            TestVoltageWithRetest(test, range, measureTime: 0.001);
+            TestVoltageWithRetest(test, range, measureTime: 0.01, retest: 5);
 
         }
 
@@ -243,10 +244,10 @@ namespace Program
 
             test = GetTest("FCT022034");
             range = GetVoltageRangeRegardingTestLimits(test);
-            TestVoltageWithRetest(test, range, measureTime: 0.001);
+            TestVoltageWithRetest(test, range, measureTime: 0.01, retest: 5);
 
-            testEnvironment.Reset();
-            Thread.Sleep(1000);
+            //testEnvironment.Reset();
+            //Thread.Sleep(1000);
         }
 
         public static void TestSBCSafepath(TestEnv<UserFlagPurpose, PmxPurpose> testEnvironment, TestParameters parameters, Func<string, TestItem> GetTest)
@@ -260,7 +261,7 @@ namespace Program
            .HasStimuliOn(new StimulusConfig(StimulusId.BSTI1, 13.5, 2, useSense:true))
            );
 
-            Thread.Sleep(1000);
+            Thread.Sleep(100);
 
 
             testEnvironment.Modify(state => state
@@ -277,7 +278,7 @@ namespace Program
 
             test = GetTest("FCT022036");
             range = GetVoltageRangeRegardingTestLimits(test);
-            TestVoltageWithRetest(test, range, measureTime: 0.1);
+            TestVoltageWithRetest(test, range, measureTime: 0.01, retest: 5);
 
             testEnvironment.Reset();
 
@@ -300,18 +301,21 @@ namespace Program
 
             test = GetTest("FCT022038");
             range = GetVoltageRangeRegardingTestLimits(test);
-            TestVoltageWithRetest(test, range, measureTime: 0.1);
+            TestVoltageWithRetest(test, range, measureTime: 0.01, retest: 5);
 
             testEnvironment.Reset();
-            
+
+            Thread.Sleep(1000);
+
         }
 
-        private static void TestVoltageWithRetest(TestItem test, DvmVRange dvmVRange, double measureTime = 0.001)
+        private static void TestVoltageWithRetest(TestItem test, DvmVRange dvmVRange, double measureTime = 0.001, int retest = 10)
         {
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < retest; i++)
             {
                 TestLibrary.Voltage(test, range: dvmVRange, measureTime: measureTime);
                 Thread.Sleep(50);
+
 
                 if (test.Result == TestResult.PASS)
                 {

@@ -13,7 +13,7 @@
 
     internal class Fct83151_4_096V_Ref_Voltage : BaseTest<TestParameters, UserFlagPurpose, PmxPurpose>
     {
-        public Fct83151_4_096V_Ref_Voltage(int site, SiteManager siteManager) : base(site, siteManager)
+        public Fct83151_4_096V_Ref_Voltage(int site, SiteManager siteManager, Variant variant) : base(site, siteManager, variant)
         {
         }
         public override bool IsEnabled { get; set; } = true;

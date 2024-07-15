@@ -13,7 +13,7 @@
 
     internal class Fct83111_ResolverExcitationOutput : BaseTest<TestParameters, UserFlagPurpose, PmxPurpose>
     {
-        public Fct83111_ResolverExcitationOutput(int site, SiteManager siteManager) : base(site, siteManager)
+        public Fct83111_ResolverExcitationOutput(int site, SiteManager siteManager, Variant variant) : base(site, siteManager, variant)
         {
         }
         public override bool IsEnabled { get; set; } = true;

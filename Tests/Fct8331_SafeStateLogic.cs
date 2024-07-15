@@ -13,7 +13,7 @@
 
     internal class Fct8331_SafeStateLogic : BaseTest<TestParameters, UserFlagPurpose, PmxPurpose>
     {
-        public Fct8331_SafeStateLogic(int site, SiteManager siteManager) : base(site, siteManager)
+        public Fct8331_SafeStateLogic(int site, SiteManager siteManager, Variant variant) : base(site, siteManager, variant)
         {
         }
 

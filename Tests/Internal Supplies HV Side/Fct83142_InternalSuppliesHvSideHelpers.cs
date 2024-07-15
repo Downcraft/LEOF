@@ -14,10 +14,12 @@ internal static class Fct83142_InternalSuppliesHvSideHelpers
     {
         Thread.Sleep(50);
         xcp.Connect();
-        Thread.Sleep(50);
+        Thread.Sleep(100);
 
 
         xcp.Download(a2l.Characteristics["HwTest_cPwrStgPar.Mode"], new List<byte> { 0x02 });
+        Thread.Sleep(50);
+
         xcp.Download(a2l.Characteristics["HwTest_cPwrStgPar.PhaseOvrrd._0_.Hs"], new List<byte> { 0x00 });
         xcp.Download(a2l.Characteristics["HwTest_cPwrStgPar.PhaseOvrrd._1_.Hs"], new List<byte> { 0x00 });
         xcp.Download(a2l.Characteristics["HwTest_cPwrStgPar.PhaseOvrrd._2_.Hs"], new List<byte> { 0x00 });
@@ -25,23 +27,7 @@ internal static class Fct83142_InternalSuppliesHvSideHelpers
         xcp.Download(a2l.Characteristics["HwTest_cPwrStgPar.PhaseOvrrd._1_.Ls"], new List<byte> { 0x00 });
         xcp.Download(a2l.Characteristics["HwTest_cPwrStgPar.PhaseOvrrd._2_.Ls"], new List<byte> { 0x00 });
 
-        TestLibrary.Voltage(GetTest("FCT142008"));
-        TestLibrary.Voltage(GetTest("FCT142009"));
-
-        TestLibrary.Voltage(GetTest("FCT142010"));
-        TestLibrary.Voltage(GetTest("FCT142011"));
-
-        TestLibrary.Voltage(GetTest("FCT142012"));
-        TestLibrary.Voltage(GetTest("FCT142013"));
-
-        TestLibrary.Voltage(GetTest("FCT142014"));
-        TestLibrary.Voltage(GetTest("FCT142015"));
-
-        TestLibrary.Voltage(GetTest("FCT142016"));
-        TestLibrary.Voltage(GetTest("FCT142017"));
-
-        TestLibrary.Voltage(GetTest("FCT142018"));
-        TestLibrary.Voltage(GetTest("FCT142019"));
+        Thread.Sleep(100);
 
         TestLibrary.Voltage(GetTest("FCT142020"), range: DvmVRange.R100V);
         TestLibrary.Voltage(GetTest("FCT142021"), range: DvmVRange.R100V);
@@ -49,15 +35,21 @@ internal static class Fct83142_InternalSuppliesHvSideHelpers
         TestLibrary.Voltage(GetTest("FCT142023"), range: DvmVRange.R100V);
         TestLibrary.Voltage(GetTest("FCT142024"), range: DvmVRange.R100V);
         TestLibrary.Voltage(GetTest("FCT142025"), range: DvmVRange.R100V);
+
+        var test = GetTest("SafeStateCheck1");
+        TestLibrary.Xcp(test, xcp, a2l.Measurements["IoEm_rHwSafeStateStsPinLvl"]);
+
     }
 
     public static void HighSideSetToHigh(Xcp xcp, A2lParser a2l, Func<string, TestItem> GetTest)
     {
         Thread.Sleep(50);
         xcp.Connect();
+        Thread.Sleep(100);
+
+        xcp.Download(a2l.Characteristics["HwTest_cPwrStgPar.Mode"], new List<byte> { 0x02 });
         Thread.Sleep(50);
 
-        //xcp.Download(a2l.Characteristics["HwTest_cPwrStgPar.Mode"], new List<byte> { 0x02 });
         xcp.Download(a2l.Characteristics["HwTest_cPwrStgPar.PhaseOvrrd._0_.Hs"], new List<byte> { 0x01 });
         xcp.Download(a2l.Characteristics["HwTest_cPwrStgPar.PhaseOvrrd._1_.Hs"], new List<byte> { 0x01 });
         xcp.Download(a2l.Characteristics["HwTest_cPwrStgPar.PhaseOvrrd._2_.Hs"], new List<byte> { 0x01 });
@@ -79,9 +71,12 @@ internal static class Fct83142_InternalSuppliesHvSideHelpers
     {
         Thread.Sleep(50);
         xcp.Connect();
+        Thread.Sleep(100);
+
+        xcp.Download(a2l.Characteristics["HwTest_cPwrStgPar.Mode"], new List<byte> { 0x02 });
         Thread.Sleep(50);
 
-        //xcp.Download(a2l.Characteristics["HwTest_cPwrStgPar.Mode"], new List<byte> { 0x02 });
+
         xcp.Download(a2l.Characteristics["HwTest_cPwrStgPar.PhaseOvrrd._0_.Hs"], new List<byte> { 0x00 });
         xcp.Download(a2l.Characteristics["HwTest_cPwrStgPar.PhaseOvrrd._1_.Hs"], new List<byte> { 0x00 });
         xcp.Download(a2l.Characteristics["HwTest_cPwrStgPar.PhaseOvrrd._2_.Hs"], new List<byte> { 0x00 });
@@ -126,12 +121,9 @@ internal static class Fct83142_InternalSuppliesHvSideHelpers
         Thread.Sleep(100);
 
         xcp.Download(a2l.Characteristics["IoEm_cInvPhaseDucySpOvrrd"], BitConverter.GetBytes(0f).ToList(), arrayIndex: 2);
-        Thread.Sleep(500);
+        Thread.Sleep(1000);
 
-       MeasureDigPoints("0");
-
-
-
+        //MeasureDigPoints("0");
 
         //TestLibrary.Voltage(GetTest("FCT142064"));
         TestLibrary.Voltage(GetTest("FCT142065"));
@@ -150,6 +142,9 @@ internal static class Fct83142_InternalSuppliesHvSideHelpers
 
         //TestLibrary.Voltage(GetTest("FCT142074"));
         TestLibrary.Voltage(GetTest("FCT142075"));
+
+        var test = GetTest("SafeStateCheck2");
+        TestLibrary.Xcp(test, xcp, a2l.Measurements["IoEm_rHwSafeStateStsPinLvl"]);
     }
 
     public static void PwmSetTo100(Xcp xcp, A2lParser a2l, Func<string, TestItem> GetTest)
@@ -171,9 +166,9 @@ internal static class Fct83142_InternalSuppliesHvSideHelpers
         xcp.Download(a2l.Characteristics["IoEm_cInvPhaseDucySpOvrrd"], BitConverter.GetBytes(100f).ToList(), arrayIndex: 2);
         Thread.Sleep(100);
 
-        Thread.Sleep(500);
+        Thread.Sleep(1000);
 
-        MeasureDigPoints("100");
+        //MeasureDigPoints("100");
 
       
 

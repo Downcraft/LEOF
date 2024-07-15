@@ -13,7 +13,7 @@
 
     internal class Fct83161_InverterSyncOut : BaseTest<TestParameters, UserFlagPurpose, PmxPurpose>
     {
-        public Fct83161_InverterSyncOut(int site, SiteManager siteManager) : base(site, siteManager)
+        public Fct83161_InverterSyncOut(int site, SiteManager siteManager, Variant variant) : base(site, siteManager, variant)
         {
         }
         public override bool IsEnabled { get; set; } = true;

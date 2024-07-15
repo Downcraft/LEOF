@@ -13,7 +13,7 @@
 
     internal class Fct83131_EmTemperatureMeasurements : BaseTest<TestParameters, UserFlagPurpose, PmxPurpose>
     {
-        public Fct83131_EmTemperatureMeasurements(int site, SiteManager siteManager) : base(site, siteManager)
+        public Fct83131_EmTemperatureMeasurements(int site, SiteManager siteManager, Variant variant) : base(site, siteManager, variant)
         {
         }
         public override bool IsEnabled { get; set; } = true;
@@ -37,30 +37,30 @@
             new TestItem { Descriptor = "FCT131014", Remark = "IoMotTemp_rWndgTemp2DiagAdcVolt (Xcp)", Minimal = 0, Nominal = 0, Maximal = 0.02, Unit = "V" },
              
             new TestItem { Descriptor = "FCT131019", Remark = "EmTHiPrim_An (Voltage)", TestPoints = new List<TestPoint> {new TestPoint("FP1x7002T1"), new TestPoint("M1x9900") }, Minimal = 4.82, Nominal = 4.87, Maximal = 4.92, Unit = "V" },
-            new TestItem { Descriptor = "FCT131020", Remark = "IoMotTemp_rWndgTemp1AdcVolt (Xcp)", Minimal = 4.4, Nominal = 4.5, Maximal = 4.6, Unit = "V" },
+            new TestItem { Descriptor = "FCT131020", Remark = "IoMotTemp_rWndgTemp1AdcVolt (Xcp)", Minimal = 4.82, Nominal = 4.87, Maximal = 4.92, Unit = "V" },
             new TestItem { Descriptor = "FCT131021", Remark = "IoMotTemp_wWndgTemp1DiagEnPinLvl (Xcp)", Minimal = 1, Nominal = 1, Maximal = 1, Unit = "Boolean" },
             new TestItem { Descriptor = "FCT131022", Remark = "EmTLoPrim_An (Voltage)", TestPoints = new List<TestPoint> {new TestPoint("FP2x7002T1"), new TestPoint("M1x9900") }, Minimal = 3.75, Nominal = 3.8, Maximal = 3.85, Unit = "V" },
             new TestItem { Descriptor = "FCT131023", Remark = "IoMotTemp_rWndgTemp1DiagAdcVolt (Xcp)", Minimal = 3.75, Nominal = 3.8, Maximal = 3.85, Unit = "V" },
             new TestItem { Descriptor = "FCT131024", Remark = "IoMotTemp_wWndgTemp1Rng2EnPinLvl (Xcp)", Minimal = 0, Nominal = 0, Maximal = 0, Unit = "Boolean" },
-            new TestItem { Descriptor = "FCT131025", Remark = "EmTHiSecdy_An (Voltage)", TestPoints = new List<TestPoint> {new TestPoint("FP1x7002T2"), new TestPoint("M1x9900") }, Minimal = 4.44, Nominal = 4.52, Maximal = 4.6, Unit = "V" },
-            new TestItem { Descriptor = "FCT131026", Remark = "IoMotTemp_rWndgTemp2AdcVolt (Xcp)", Minimal = 4.44, Nominal = 4.52, Maximal = 4.6, Unit = "V" },
+            new TestItem { Descriptor = "FCT131025", Remark = "EmTHiSecdy_An (Voltage)", TestPoints = new List<TestPoint> {new TestPoint("FP1x7002T2"), new TestPoint("M1x9900") }, Minimal = 4.82, Nominal = 4.87, Maximal = 4.92, Unit = "V" },
+            new TestItem { Descriptor = "FCT131026", Remark = "IoMotTemp_rWndgTemp2AdcVolt (Xcp)", Minimal = 4.82, Nominal = 4.87, Maximal = 4.92, Unit = "V" },
             new TestItem { Descriptor = "FCT131027", Remark = "IoMotTemp_wWndgTemp2DiagEnPinLvl (Xcp)", Minimal = 1, Nominal = 1, Maximal = 1, Unit = "Boolean" },
             new TestItem { Descriptor = "FCT131028", Remark = "EmTLoSecdy_An (Voltage)", TestPoints = new List<TestPoint> {new TestPoint("FP2x7002T2"), new TestPoint("M1x9900") }, Minimal = 3.75, Nominal = 3.8, Maximal = 3.85, Unit = "V" },
             new TestItem { Descriptor = "FCT131029", Remark = "IoMotTemp_rWndgTemp2DiagAdcVolt (Xcp)", Minimal = 3.75, Nominal = 3.8, Maximal = 3.85, Unit = "V" },
             new TestItem { Descriptor = "FCT131030", Remark = "IoMotTemp_wWndgTemp2Rng2EnPinLvl (Xcp)", Minimal = 0, Nominal = 0, Maximal = 0, Unit = "Boolean" },
             
-            new TestItem { Descriptor = "FCT131035", Remark = "EmTHiPrim_An (Voltage)", TestPoints = new List<TestPoint> {new TestPoint("FP1x7002T1"), new TestPoint("M1x9900") }, Minimal = 4.82, Nominal = 4.87, Maximal = 5.00, Unit = "V" },
-            new TestItem { Descriptor = "FCT131036", Remark = "IoMotTemp_rWndgTemp1AdcVolt (Xcp)", Minimal = 4.82, Nominal = 4.87, Maximal = 5, Unit = "V" },
+            new TestItem { Descriptor = "FCT131035", Remark = "EmTHiPrim_An (Voltage)", TestPoints = new List<TestPoint> {new TestPoint("FP1x7002T1"), new TestPoint("M1x9900") }, Minimal = 4.44, Nominal = 4.52, Maximal = 4.6, Unit = "V" },
+            new TestItem { Descriptor = "FCT131036", Remark = "IoMotTemp_rWndgTemp1AdcVolt (Xcp)", Minimal = 4.44, Nominal = 4.52, Maximal = 4.6, Unit = "V" },
             new TestItem { Descriptor = "FCT131037", Remark = "IoMotTemp_wWndgTemp1DiagEnPinLvl (Xcp)", Minimal = 1, Nominal = 1, Maximal = 1, Unit = "Boolean" },
-            new TestItem { Descriptor = "FCT131038", Remark = "EmTLoPrim_An (Voltage)", TestPoints = new List<TestPoint> {new TestPoint("FP2x7002T1"), new TestPoint("M1x9900") }, Minimal = 3.75, Nominal = 3.8, Maximal = 3.85, Unit = "V" },
-            new TestItem { Descriptor = "FCT131039", Remark = "IoMotTemp_rWndgTemp1DiagAdcVolt (Xcp)", Minimal = 3.75, Nominal = 3.8, Maximal = 3.85, Unit = "V" },
-            new TestItem { Descriptor = "FCT131040", Remark = "IoMotTemp_wWndgTemp1Rng2EnPinLvl (Xcp)", Minimal = 0, Nominal = 0, Maximal = 0, Unit = "Boolean" },
-            new TestItem { Descriptor = "FCT131041", Remark = "EmTHiSecdy_An (Voltage)", TestPoints = new List<TestPoint> {new TestPoint("FP1x7002T2"), new TestPoint("M1x9900") }, Minimal = 4.82, Nominal = 4.87, Maximal = 5.0, Unit = "V" },
-            new TestItem { Descriptor = "FCT131042", Remark = "IoMotTemp_rWndgTemp2AdcVolt (Xcp)", Minimal = 4.82, Nominal = 4.87, Maximal = 5.0, Unit = "V" },
+            new TestItem { Descriptor = "FCT131038", Remark = "EmTLoPrim_An (Voltage)", TestPoints = new List<TestPoint> {new TestPoint("FP2x7002T1"), new TestPoint("M1x9900") }, Minimal = 0.42, Nominal = 0.47, Maximal = 0.5, Unit = "V" },
+            new TestItem { Descriptor = "FCT131039", Remark = "IoMotTemp_rWndgTemp1DiagAdcVolt (Xcp)", Minimal = 0.42, Nominal = 0.47, Maximal = 0.5, Unit = "V" },
+            new TestItem { Descriptor = "FCT131040", Remark = "IoMotTemp_wWndgTemp1Rng2EnPinLvl (Xcp)", Minimal = 1, Nominal = 1, Maximal = 1, Unit = "Boolean" },
+            new TestItem { Descriptor = "FCT131041", Remark = "EmTHiSecdy_An (Voltage)", TestPoints = new List<TestPoint> {new TestPoint("FP1x7002T2"), new TestPoint("M1x9900") }, Minimal = 4.44, Nominal = 4.52, Maximal = 4.6, Unit = "V" },
+            new TestItem { Descriptor = "FCT131042", Remark = "IoMotTemp_rWndgTemp2AdcVolt (Xcp)", Minimal = 4.44, Nominal = 4.52, Maximal = 4.6, Unit = "V" },
             new TestItem { Descriptor = "FCT131043", Remark = "IoMotTemp_wWndgTemp2DiagEnPinLvl (Xcp)", Minimal = 1, Nominal = 1, Maximal = 1, Unit = "Boolean" },
-            new TestItem { Descriptor = "FCT131044", Remark = "EmTLoSecdy_An (Voltage)", TestPoints = new List<TestPoint> {new TestPoint("FP2x7002T2"), new TestPoint("M1x9900") }, Minimal = 3.75, Nominal = 3.8, Maximal = 3.85, Unit = "V" },
-            new TestItem { Descriptor = "FCT131045", Remark = "IoMotTemp_rWndgTemp2DiagAdcVolt (Xcp)", Minimal = 3.75, Nominal = 3.8, Maximal = 3.85, Unit = "V" },
-            new TestItem { Descriptor = "FCT131046", Remark = "IoMotTemp_wWndgTemp2Rng2EnPinLvl (Xcp)", Minimal = 0, Nominal = 0, Maximal = 0, Unit = "Boolean" },
+            new TestItem { Descriptor = "FCT131044", Remark = "EmTLoSecdy_An (Voltage)", TestPoints = new List<TestPoint> {new TestPoint("FP2x7002T2"), new TestPoint("M1x9900") }, Minimal = 0.42, Nominal = 0.47, Maximal = 0.5, Unit = "V" },
+            new TestItem { Descriptor = "FCT131045", Remark = "IoMotTemp_rWndgTemp2DiagAdcVolt (Xcp)", Minimal = 0.42, Nominal = 0.47, Maximal = 0.5, Unit = "V" },
+            new TestItem { Descriptor = "FCT131046", Remark = "IoMotTemp_wWndgTemp2Rng2EnPinLvl (Xcp)", Minimal = 1, Nominal = 1, Maximal = 1, Unit = "Boolean" },
 
         };
 

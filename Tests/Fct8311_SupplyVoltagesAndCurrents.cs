@@ -10,11 +10,12 @@
     using Spea.TestFramework;
    
     using System.Linq;
+    using Prorgam;
 
     internal partial class Fct8311_SupplyVoltagesAndCurrents : BaseTest<TestParameters, UserFlagPurpose, PmxPurpose>
     {
 
-        public Fct8311_SupplyVoltagesAndCurrents(int site, SiteManager siteManager) : base(site, siteManager)
+        public Fct8311_SupplyVoltagesAndCurrents(int site, SiteManager siteManager, Variant variant) : base(site, siteManager, variant)
         {
 
         }
@@ -49,6 +50,7 @@
             var xcp = parameters.Xcp;
 
             var test = new TestItem();
+            Thread.Sleep(500);
 
             _testEnvironment.Set(state => state
                 //.HasTpsConnectedToAbus(Abus.ABUS1, 1537, 1540)
@@ -57,19 +59,16 @@
                 .HasStimuliOn(new StimulusConfig(StimulusId.BSTI1, 13.5, 2, useSense: true))
             );
             
-            
-            
-
+                        
 
             Thread.Sleep(500);
 
-          
+            //Restbus.PowerOn = true;
+
+            //Thread.Sleep(500);
+
             test = GetTest("FCT011001");
             TestLibrary.StimulusCurrent(test, testEnvironment.GetStimulus(StimulusId.BSTI1), timeOnMs: 20, 10);
-
-
-
-
 
             test = GetTest("FCT011002");
             TestLibrary.Voltage(test);

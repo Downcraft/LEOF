@@ -13,7 +13,7 @@
 
     internal class Fct83112_ResolverInterface : BaseTest<TestParameters, UserFlagPurpose, PmxPurpose>
     {
-        public Fct83112_ResolverInterface(int site, SiteManager siteManager) : base(site, siteManager)
+        public Fct83112_ResolverInterface(int site, SiteManager siteManager, Variant variant) : base(site, siteManager, variant)
         {
         }
         public override bool IsEnabled { get; set; } = true;

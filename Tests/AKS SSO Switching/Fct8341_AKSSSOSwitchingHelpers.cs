@@ -50,13 +50,18 @@ namespace Program
 
                 Thread.Sleep(delayInMs);
 
-                TestLibrary.Voltage(levelTest, range: DvmVRange.R10V);
-
-                if (levelTest.Result == TestResult.PASS)         
+                if (!((triggerTest.Measured != double.NaN) && (triggerTest.Measured != 0)))
                 {
-                    triggerTest.Measured = Math.Round(TestLibrary.Voltage(triggerTest, range: DvmVRange.R1V).Measured * 357.7817531305903,3);
-                    break;
+
+                    TestLibrary.Voltage(levelTest, range: DvmVRange.R10V);
+
+                    if (levelTest.Result == TestResult.PASS)
+                    {
+                        triggerTest.Measured = Math.Round(TestLibrary.Voltage(triggerTest, range: DvmVRange.R1V).Measured * 357.7817531305903, 3);                        
+                    }
                 }
+
+                //LogController.Print($"{Math.Round(voltage* 357.7817531305903)} V");
             }            
 
             if(levelTest.Result != TestResult.PASS)

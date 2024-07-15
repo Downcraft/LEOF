@@ -13,7 +13,7 @@
 
     internal class Fct8312_15VMonitoring : BaseTest<TestParameters, UserFlagPurpose, PmxPurpose>
     {
-        public Fct8312_15VMonitoring(int site, SiteManager siteManager) : base(site, siteManager)
+        public Fct8312_15VMonitoring(int site, SiteManager siteManager, Variant variant) : base(site, siteManager, variant)
         {
         }
 

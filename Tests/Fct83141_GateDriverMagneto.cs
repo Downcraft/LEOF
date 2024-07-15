@@ -14,7 +14,7 @@
 
     internal class Fct83141_GateDriverMagneto : BaseTest<TestParameters, UserFlagPurpose, PmxPurpose>
     {
-        public Fct83141_GateDriverMagneto(int site, SiteManager siteManager) : base(site, siteManager)
+        public Fct83141_GateDriverMagneto(int site, SiteManager siteManager, Variant variant) : base(site, siteManager, variant)
         {
         }
 

@@ -10,19 +10,21 @@
             </summary>
             <typeparam name="TTestParameters">A type used to pass custom parameters to the tests.</typeparam>
         </member>
-        <member name="M:Spea.TestFramework.BaseTest`1.#ctor(System.Int32,Spea.TestFramework.SiteManager)">
+        <member name="M:Spea.TestFramework.BaseTest`1.#ctor(System.Int32,Spea.TestFramework.SiteManager,Spea.TestFramework.Variant)">
             <summary>
             Initializes a new instance of the <see cref="T:Spea.TestFramework.BaseTest`1"/> class.
             </summary>
             <param name="site">The site being tested.</param>
             <param name="siteManager">The <see cref="T:Spea.TestFramework.SiteManager"/> instance for this TPGM.</param>
+            <param name="variant">The variant being tested.</param>
         </member>
-        <member name="M:Spea.TestFramework.BaseTest`1.#ctor(System.Collections.Generic.List{System.Int32},Spea.TestFramework.SiteManager)">
+        <member name="M:Spea.TestFramework.BaseTest`1.#ctor(System.Collections.Generic.List{System.Int32},Spea.TestFramework.SiteManager,Spea.TestFramework.Variant)">
             <summary>
             Initializes a new instance of the <see cref="T:Spea.TestFramework.BaseTest`1"/> class.
             </summary>
             <param name="sites">The list of sites being tested.</param>
             <param name="siteManager">The <see cref="T:Spea.TestFramework.SiteManager"/> instance for this TPGM.</param>
+            <param name="variant">The variant being tested.</param>
         </member>
         <member name="T:Spea.TestFramework.BaseTest`3">
             <summary>
@@ -32,19 +34,21 @@
             <typeparam name="TUserFlagPurpose">An enum describing the purpose of each used user flag.</typeparam>
             <typeparam name="TPmxPurpose">An enum describing the purpose of each used pmx channel.</typeparam>
         </member>
-        <member name="M:Spea.TestFramework.BaseTest`3.#ctor(System.Int32,Spea.TestFramework.SiteManager)">
+        <member name="M:Spea.TestFramework.BaseTest`3.#ctor(System.Int32,Spea.TestFramework.SiteManager,Spea.TestFramework.Variant)">
             <summary>
             Initializes a new instance of the <see cref="T:Spea.TestFramework.BaseTest`3"/> class.
             </summary>
             <param name="site">The site being tested.</param>
             <param name="siteManager">The <see cref="T:Spea.TestFramework.SiteManager"/> instance for this TPGM.</param>
+            <param name="variant">The variant being tested.</param>
         </member>
-        <member name="M:Spea.TestFramework.BaseTest`3.#ctor(System.Collections.Generic.List{System.Int32},Spea.TestFramework.SiteManager)">
+        <member name="M:Spea.TestFramework.BaseTest`3.#ctor(System.Collections.Generic.List{System.Int32},Spea.TestFramework.SiteManager,Spea.TestFramework.Variant)">
             <summary>
             Initializes a new instance of the <see cref="T:Spea.TestFramework.BaseTest`3"/> class.
             </summary>
             <param name="sites">The list of sites being tested.</param>
             <param name="siteManager">The <see cref="T:Spea.TestFramework.SiteManager"/> instance for this TPGM.</param>
+            <param name="variant">The variant being tested.</param>
         </member>
         <member name="T:Spea.TestFramework.LoggingVariant">
             <summary>
@@ -92,7 +96,7 @@
             </summary>
             <typeparam name="TTestParameters">A type used to pass custom parameters to the tests.</typeparam>
         </member>
-        <member name="M:Spea.TestFramework.MultiSiteTestFactory`1.#ctor(System.Func{System.Collections.Generic.List{System.Int32},Spea.TestFramework.SiteManager,Spea.TestFramework.BaseTest{`0}},System.Int32[])">
+        <member name="M:Spea.TestFramework.MultiSiteTestFactory`1.#ctor(System.Func{System.Collections.Generic.List{System.Int32},Spea.TestFramework.SiteManager,Spea.TestFramework.Variant,Spea.TestFramework.BaseTest{`0}},System.Int32[])">
             <summary>
             Initializes a new instance of the <see cref="T:Spea.TestFramework.MultiSiteTestFactory`1"/> class.
             </summary>
@@ -109,11 +113,12 @@
             Gets the delegate used to create an instance of the test.
             </summary>
         </member>
-        <member name="M:Spea.TestFramework.MultiSiteTestFactory`1.Create(Spea.TestFramework.SiteManager)">
+        <member name="M:Spea.TestFramework.MultiSiteTestFactory`1.Create(Spea.TestFramework.SiteManager,Spea.TestFramework.Variant)">
             <summary>
             Creates the test for the specified sites that should be tested.
             </summary>
             <param name="siteManager">The site manager instance for the project.</param>
+            <param name="variant">The variant to test.</param>
             <returns>The instance of the test.</returns>
         </member>
         <member name="T:Spea.TestFramework.MultiSiteTestFactory`3">
@@ -124,7 +129,7 @@
             <typeparam name="TUserFlagPurpose">An enum describing the purpose of each used user flag.</typeparam>
             <typeparam name="TPmxPurpose">An enum describing the purpose of each used PMX channel.</typeparam>
         </member>
-        <member name="M:Spea.TestFramework.MultiSiteTestFactory`3.#ctor(System.Func{System.Collections.Generic.List{System.Int32},Spea.TestFramework.SiteManager,Spea.TestFramework.BaseTest{`0,`1,`2}},System.Int32[])">
+        <member name="M:Spea.TestFramework.MultiSiteTestFactory`3.#ctor(System.Func{System.Collections.Generic.List{System.Int32},Spea.TestFramework.SiteManager,Spea.TestFramework.Variant,Spea.TestFramework.BaseTest{`0,`1,`2}},System.Int32[])">
             <summary>
             Initializes a new instance of the <see cref="T:Spea.TestFramework.MultiSiteTestFactory`3"/> class.
             </summary>
@@ -141,11 +146,12 @@
             Gets the delegate used to create an instance of the test.
             </summary>
         </member>
-        <member name="M:Spea.TestFramework.MultiSiteTestFactory`3.Create(Spea.TestFramework.SiteManager)">
+        <member name="M:Spea.TestFramework.MultiSiteTestFactory`3.Create(Spea.TestFramework.SiteManager,Spea.TestFramework.Variant)">
             <summary>
             Creates the test for the specified sites that should be tested.
             </summary>
             <param name="siteManager">The site manager instance for the project.</param>
+            <param name="variant">The variant to test.</param>
             <returns>The instance of the test.</returns>
         </member>
         <member name="T:Spea.TestFramework.MultiSiteTestList`1">
@@ -154,7 +160,7 @@
             </summary>
             <typeparam name="TTestParameters">A type used to pass custom parameters to the tests.</typeparam>
         </member>
-        <member name="M:Spea.TestFramework.MultiSiteTestList`1.Add(System.Func{System.Collections.Generic.List{System.Int32},Spea.TestFramework.SiteManager,Spea.TestFramework.BaseTest{`0}},System.Int32[])">
+        <member name="M:Spea.TestFramework.MultiSiteTestList`1.Add(System.Func{System.Collections.Generic.List{System.Int32},Spea.TestFramework.SiteManager,Spea.TestFramework.Variant,Spea.TestFramework.BaseTest{`0}},System.Int32[])">
             <summary>
             Adds an object to the end of <see cref="T:Spea.TestFramework.MultiSiteTestFactory`1"/>.
             </summary>
@@ -169,7 +175,7 @@
             <typeparam name="TUserFlagPurpose">An enum describing the purpose of each used user flag.</typeparam>
             <typeparam name="TPmxPurpose">An enum describing the purpose of each used pmx channel.</typeparam>
         </member>
-        <member name="M:Spea.TestFramework.MultiSiteTestList`3.Add(System.Func{System.Collections.Generic.List{System.Int32},Spea.TestFramework.SiteManager,Spea.TestFramework.BaseTest{`0,`1,`2}},System.Int32[])">
+        <member name="M:Spea.TestFramework.MultiSiteTestList`3.Add(System.Func{System.Collections.Generic.List{System.Int32},Spea.TestFramework.SiteManager,Spea.TestFramework.Variant,Spea.TestFramework.BaseTest{`0,`1,`2}},System.Int32[])">
             <summary>
             Adds an object to the end of <see cref="T:Spea.TestFramework.MultiSiteTestFactory`3"/>.
             </summary>
@@ -341,19 +347,21 @@
             <typeparam name="TTestEnv">The type of the test environment instance.</typeparam>
             <typeparam name="TTestParameters">A type used to pass custom parameters to the tests.</typeparam>
         </member>
-        <member name="M:Spea.TestFramework.TemplateTest`2.#ctor(System.Int32,Spea.TestFramework.SiteManager)">
+        <member name="M:Spea.TestFramework.TemplateTest`2.#ctor(System.Int32,Spea.TestFramework.SiteManager,Spea.TestFramework.Variant)">
             <summary>
             Initializes a new instance of the <see cref="T:Spea.TestFramework.TemplateTest`2"/> class.
             </summary>
             <param name="site">The site being tested.</param>
             <param name="siteManager">The <see cref="P:Spea.TestFramework.TemplateTest`2.SiteManager"/> instance for this TPGM.</param>
+            <param name="variant">The variant being tested.</param>
         </member>
-        <member name="M:Spea.TestFramework.TemplateTest`2.#ctor(System.Collections.Generic.List{System.Int32},Spea.TestFramework.SiteManager)">
+        <member name="M:Spea.TestFramework.TemplateTest`2.#ctor(System.Collections.Generic.List{System.Int32},Spea.TestFramework.SiteManager,Spea.TestFramework.Variant)">
             <summary>
             Initializes a new instance of the <see cref="T:Spea.TestFramework.TemplateTest`2"/> class.
             </summary>
             <param name="sites">The list of sites being tested.</param>
             <param name="siteManager">The <see cref="P:Spea.TestFramework.TemplateTest`2.SiteManager"/> instance for this TPGM.</param>
+            <param name="variant">The variant being tested.</param>
         </member>
         <member name="P:Spea.TestFramework.TemplateTest`2.Sites">
             <summary>
@@ -363,7 +371,7 @@
         <member name="P:Spea.TestFramework.TemplateTest`2.IsEnabled">
             <summary>
             Gets or sets a value indicating whether the test should be performed.
-            This value is read from Objects.ini using the <see cref="M:Spea.TestFramework.TemplateTest`2.ApplyUserChanges"/> method.
+            This value is read from Objects.ini using the <see cref="M:Spea.TestFramework.TemplateTest`2.ApplyUserChanges(Spea.TestFramework.Variant)"/> method.
             </summary>
         </member>
         <member name="P:Spea.TestFramework.TemplateTest`2.CdCollLogCongfig">
@@ -404,6 +412,11 @@
             Gets the site manager instance.
             </summary>
         </member>
+        <member name="P:Spea.TestFramework.TemplateTest`2.Variant">
+            <summary>
+            Gets current active variant.
+            </summary>
+        </member>
         <member name="M:Spea.TestFramework.TemplateTest`2.GetTest(System.String)">
             <summary>
             Retrieves a test item by the descriptor. Only works for tests handling a single site.
@@ -414,6 +427,21 @@
         <member name="M:Spea.TestFramework.TemplateTest`2.GetTest(System.String,System.Int32)">
             <summary>
             Retrieves a test item by the descriptor and site.
+            </summary>
+            <param name="descriptor">The descriptor of the test.</param>
+            <param name="site">The site for which the test should be retrieved.</param>
+            <returns>The test item.</returns>
+        </member>
+        <member name="M:Spea.TestFramework.TemplateTest`2.GetTestForVariant(System.String)">
+            <summary>
+            Retrieves a test item by the descriptor for the active variant. Only works for tests handling a single site.
+            </summary>
+            <param name="descriptor">The descriptor of the test.</param>
+            <returns>The test item.</returns>
+        </member>
+        <member name="M:Spea.TestFramework.TemplateTest`2.GetTestForVariant(System.String,System.Int32)">
+            <summary>
+            Retrieves a test item by the descriptor and site for the active variant.
             </summary>
             <param name="descriptor">The descriptor of the test.</param>
             <param name="site">The site for which the test should be retrieved.</param>
@@ -450,7 +478,7 @@
             </summary>
             <param name="sites">The sites being tested.</param>
         </member>
-        <member name="M:Spea.TestFramework.TemplateTest`2.ApplyUserChanges">
+        <member name="M:Spea.TestFramework.TemplateTest`2.ApplyUserChanges(Spea.TestFramework.Variant)">
             <summary>
             Apply the changes made by the user in Objects.ini to the <see cref="P:Spea.TestFramework.TemplateTest`2.TestItems"/> list.
             </summary>
@@ -478,6 +506,11 @@
         <member name="P:Spea.TestFramework.TestItem.NextAvailableId">
             <summary>
             Gets the next available Id.
+            </summary>
+        </member>
+        <member name="P:Spea.TestFramework.TestItem.Variants">
+            <summary>
+            Gets or sets list of Variants of the test item.
             </summary>
         </member>
         <member name="P:Spea.TestFramework.TestItem.Descriptor">

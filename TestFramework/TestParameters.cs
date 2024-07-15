@@ -13,6 +13,7 @@
     using System.IO;
     using System.Diagnostics;
     using Spea.TestEnvironment;
+   
 
     /// <summary>
     /// Use this class to pass custom parameters to your tests.
@@ -20,14 +21,19 @@
     /// </summary>
     public class TestParameters
     {
-        public static bool Debug = true;
-        public static bool DontBreakOnFail = true;
+        public static bool Debug = false;
+        public static string DebugLoggingPath = $"C:\\data\\Magna SK\\eATS_FCT\\SystemLog.txt";
+        public static bool DontBreakOnFail = false;
 
         public TestParameters()
         {
+            var a2lName = IniFile.GetValue("SOFTWARE_CHECK", $"A2L");
+            LeoF.TpgmPathRead(out string path);
+            path = Path.Combine(path, "FTP\\LEOF", a2lName);
 
 
-            A2l = new A2lParser(IniFile.GetValue("SOFTWARE_CHECK", $"A2L"));
+            A2l = new A2lParser(path);
+
             Xcp = new Xcp(
                 Xcp.NominalBitrate._500k,
                 Xcp.DataBitrate._2M,
